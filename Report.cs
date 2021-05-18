@@ -9,20 +9,21 @@ namespace A2SDD
 	{
 		public static void OrderByPerformance(List<Researcher> rl)
 		{
-
+			//sorted list of researchers by performance
 			List<Researcher> sorted;
+			float performance = 0;
+			int maxID;
 
 			for (int i = 0; i < rl.Count(); i++)
 			{
-				int performance = 0;
-				int maxID;
 
 				if (performance < Staff.Performance(rl[i]))
 				{
+					performance = Staff.Performance(rl[i]);
 					maxID = rl[i].ID;
 				}
 			}
-
+			 
 			
 		}
 	}
