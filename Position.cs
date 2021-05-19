@@ -5,7 +5,7 @@ using System.Text;
 namespace A2SDD
 {
     enum Level { A, B, C, D, E }
-    class Position : Researcher
+    class Position
     {
         public Level Level { get; set; }
         public DateTime Start { get; set; }

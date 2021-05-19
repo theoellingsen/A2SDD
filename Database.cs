@@ -88,7 +88,8 @@ namespace A2SDD
         public static Researcher LoadReseacherDetailsView(Researcher r)
         {
             MySqlConnection conn = GetConnection();
-            MySqlDataReader rdr = null;
+            MySqlDataReader rdra = null; 
+            MySqlDataReader rdrb = null;
 
             try
             {
@@ -98,19 +99,31 @@ namespace A2SDD
                                                     "from researcher " +
                                                     "where resercher_id=?id", conn);
 
-
+                MySqlCommand PositionResearcher = new MySqlCommand("");
 
                 cmd.Parameters.AddWithValue("id", r.ID);
-                rdr = cmd.ExecuteReader();
+                rdra = cmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (rdra.Read())
                 {
-                    r.ID = rdr.GetInt32(0);
+                    r.School = rdra.GetString(5);
+                    r.Unit = rdra.GetString(6);
+                    r.Campus = ParseEnum<Campus>(rdra.GetString(7));
+                    r.Email = rdra.GetString(8);
+                    r.Photo = rdra.GetString(9);
+                }
 
-                    // GivenName = rdr.GetString(2),
-                    //   FamilyName = rdr.GetString(3),
-                    // Title = rdr.GetString(4)
+                PositionResearcher.Parameters.AddWithValue("id", r.ID);
+                rdrb = PositionResearcher.ExecuteReader();
 
+                while (rdrb.Read())
+                {
+                    r.Positions.Add(new Position 
+                    {
+                        Level = ParseEnum<Level>(rdrb.GetString(4)),
+                        Start = rdrb.GetDateTime(5),
+                        End = rdrb.GetDateTime(6)
+                    });
                 }
             }
             catch (MySqlException e)
@@ -119,9 +132,13 @@ namespace A2SDD
             }
             finally
             {
-                if (rdr != null)
+                if (rdra != null)
                 {
-                    rdr.Close();
+                    rdra.Close();
+                }
+                if (rdrb != null)
+                {
+                    rdrb.Close();
                 }
                 if (conn != null)
                 {
