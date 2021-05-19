@@ -6,6 +6,7 @@ using System.Linq;
 namespace A2SDD
 {
     //ESSENTIAL
+
     class Staff : Researcher
     {
         private enum PublicationLevel
@@ -19,10 +20,10 @@ namespace A2SDD
 
         private PublicationLevel Level { get; set; }
 
-        
+
         public static float ThreeYearAverage(int ID)
         {
-           //Initiate database object (will be replaced with PublicationController at later date)
+            //Initiate database object (will be replaced with PublicationController at later date)
 
             // Create list of publications from given researcher
             List<Publication> publications = new List<Publication>(Database.LoadPublications(ID));
@@ -36,17 +37,18 @@ namespace A2SDD
                 select Publication;
 
             // Create list pf publications from selected
-            List < Publication > lastThree = new List<Publication>(selected);
-            
+            List<Publication> lastThree = new List<Publication>(selected);
+
             // Return average over three years
-            return lastThree.Count() / 3; 
+            return lastThree.Count() / 3;
         }
 
         public static float Performance(Researcher r)
         {
             // Performance is three year average divided by performance level
-            return ThreeYearAverage(r.ID) / (float) r.Positions[0].Level * 10;
+            return ThreeYearAverage(r.ID) / (float)r.Positions[0].Level * 10;
         }
-        
+
+
     }
 }

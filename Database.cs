@@ -9,7 +9,7 @@ using MySql.Data.Types;
 
 namespace A2SDD
 {
-    
+
     abstract class Database
     {
         private const string db = "kit206";
@@ -107,10 +107,10 @@ namespace A2SDD
                 {
                     r.ID = rdr.GetInt32(0);
 
-                        GivenName = rdr.GetString(2),
-                        FamilyName = rdr.GetString(3),
-                        Title = rdr.GetString(4)
-                    
+                    // GivenName = rdr.GetString(2),
+                    //   FamilyName = rdr.GetString(3),
+                    // Title = rdr.GetString(4)
+
                 }
             }
             catch (MySqlException e)
@@ -129,7 +129,7 @@ namespace A2SDD
                 }
             }
 
-            return staff;
+            return r;
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace A2SDD
                         Title = rdr.GetString(1),
                         Authors = rdr.GetString(2),
                         Year = rdr.GetDateTime(3),
-                        Type = ParseEnum<Type>(rdr.GetString(4)),
+                        //  Type = ParseEnum<Type>(rdr.GetString(4)),
                         CiteAs = rdr.GetString(5),
                         Available = rdr.GetDateTime(6)
                     });
@@ -192,47 +192,47 @@ namespace A2SDD
 
         //Optional part of step 2.3.4 in Week 8 tutorial illustrating that some answers can be obtained by directly querying the database.
         //This is useful if the necessary data has not been loaded into memory yet.
-        public static int EmployeeTrainingCount(Employee e, int startYear, int endYear)
-        {
-            MySqlConnection conn = GetConnection();
-            int count = 0;
+        /* public static int EmployeeTrainingCount(Researcher e, int startYear, int endYear)
+         {
+             MySqlConnection conn = GetConnection();
+             int count = 0;
 
-            try
-            {
-                conn.Open();
+             try
+             {
+                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
-                                                    "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
-                cmd.Parameters.AddWithValue("id", e.ID);
-                cmd.Parameters.AddWithValue("start", startYear);
-                cmd.Parameters.AddWithValue("end", endYear);
-                count = Int32.Parse(cmd.ExecuteScalar().ToString());
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine("Error connecting to database: " + ex);
-            }
-            finally
-            {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
+                 MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
+                                                     "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
+                 cmd.Parameters.AddWithValue("id", e.ID);
+                 cmd.Parameters.AddWithValue("start", startYear);
+                 cmd.Parameters.AddWithValue("end", endYear);
+                 count = Int32.Parse(cmd.ExecuteScalar().ToString());
+             }
+             catch (MySqlException ex)
+             {
+                 Console.WriteLine("Error connecting to database: " + ex);
+             }
+             finally
+             {
+                 if (conn != null)
+                 {
+                     conn.Close();
+                 }
+             }
 
-            return count;
-        }
+             return count;
+         }
 
-        //This method is now obsolete.
-        public static List<Employee> Generate()
-        {
-            return new List<Employee>() {
-                new Employee { Name = "Jane", ID = 1, Gender = Gender.F },
-                new Employee { Name = "John", ID = 3, Gender = Gender.M },
-                new Employee { Name = "Mary", ID = 7, Gender = Gender.F },
-                new Employee { Name = "Lindsay", ID = 5, Gender = Gender.X },
-                new Employee { Name = "Meilin", ID = 2, Gender = Gender.F }
-            };
-        }
+         //This method is now obsolete.
+         public static List<Employee> Generate()
+         {
+             return new List<Employee>() {
+                 new Employee { Name = "Jane", ID = 1, Gender = Gender.F },
+                 new Employee { Name = "John", ID = 3, Gender = Gender.M },
+                 new Employee { Name = "Mary", ID = 7, Gender = Gender.F },
+                 new Employee { Name = "Lindsay", ID = 5, Gender = Gender.X },
+                 new Employee { Name = "Meilin", ID = 2, Gender = Gender.F }
+             };
+         } */
     }
 }

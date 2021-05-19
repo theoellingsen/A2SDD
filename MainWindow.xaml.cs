@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 namespace A2SDDWPF
 {
+
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
@@ -23,6 +24,6 @@ namespace A2SDDWPF
 		public MainWindow()
 		{
 			InitializeComponent();
-		}
+		} 
 	}
 }
