@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Collections.ObjectModel;
 namespace A2SDD
 {
+
     public enum Campus { Hobart, Launceston, CradleCoast }
     class Researcher
     {
@@ -31,7 +32,12 @@ namespace A2SDD
 
         public List<Publication> Publications { get; set; }
 
-
+       public ObservableCollection<Researcher> GetViewableList()
+		{
+            List<Researcher> rl = Database.LoadReseacherListView();
+            ObservableCollection<Researcher> oc = new ObservableCollection<Researcher>(rl);
+            return oc;
+		}
 
         Position CurrentJob(Researcher r)
         {

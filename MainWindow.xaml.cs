@@ -24,6 +24,16 @@ namespace A2SDDWPF
 		public MainWindow()
 		{
 			InitializeComponent();
-		} 
+		}
+
+		private void ResearcherListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+	
+		}
+
+		private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
