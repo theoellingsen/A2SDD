@@ -21,7 +21,10 @@
                 <TextBlock Text="{Binding Path=FamilyName}"/>
                 <TextBlock Text=", "/>
                 <TextBlock Text="{Binding Path=GivenName}"/>
-                </StackPanel>
+                <TextBlock Text=" ("/>
+                <TextBlock Text="{Binding Path=Title}"/>
+                <TextBlock Text=")"/>
+            </StackPanel>
                 </DataTemplate>
     </Window.Resources>
     <Grid
