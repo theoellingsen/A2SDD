@@ -7,7 +7,12 @@
              
              
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
-        
+
+            <Application.Resources>
+        <local:Researcher x:Key="Researcher"/>
+            <ObjectDataProvider x:Key="ResearcherListView"
+             ObjectInstance="{StaticResource Researcher}"
+             MethodName="GetViewableList">
+        </ObjectDataProvider>
     </Application.Resources>
 </Application>

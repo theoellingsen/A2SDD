@@ -51,7 +51,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select id, given_name, family_name from researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT id, given_name, family_name, title FROM 'researcher'", conn);
 
                 rdr = cmd.ExecuteReader();
 
@@ -62,8 +62,9 @@ namespace A2SDD
                         ID = rdr.GetInt32(0),
                         GivenName = rdr.GetString(2),
                         FamilyName = rdr.GetString(3),
-                        Title = rdr.GetString(4)
-                    });
+                        Title = rdr.GetString(4),
+
+                    }) ;
                 }
             }
             catch (MySqlException e)

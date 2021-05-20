@@ -32,6 +32,8 @@ namespace A2SDD
 
         public List<Publication> Publications { get; set; }
 
+       
+
        public ObservableCollection<Researcher> GetViewableList()
 		{
             List<Researcher> rl = Database.LoadReseacherListView();
