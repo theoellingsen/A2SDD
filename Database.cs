@@ -51,7 +51,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT id, given_name, family_name, title FROM 'researcher'", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT id, given_name, family_name, title FROM researcher", conn);
 
                 rdr = cmd.ExecuteReader();
 
@@ -60,9 +60,9 @@ namespace A2SDD
                     researchers.Add(new Researcher
                     {
                         ID = rdr.GetInt32(0),
-                        GivenName = rdr.GetString(2),
-                        FamilyName = rdr.GetString(3),
-                        Title = rdr.GetString(4),
+                        GivenName = rdr.GetString(1),
+                        FamilyName = rdr.GetString(2),
+                        Title = rdr.GetString(3),
 
                     }) ;
                 }

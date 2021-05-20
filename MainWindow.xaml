@@ -24,13 +24,8 @@
 
     <Grid MinWidth="50" HorizontalAlignment="Left">
         <ListBox x:Name="ResearcherListView" Margin="1,1,0,1" Opacity="0.95" Background="#FFCCCCCC" Grid.Row="1" HorizontalAlignment="Left" MinWidth="50" Width="150" HorizontalContentAlignment="Left">
-
             <ListBox ItemsSource="{Binding Source={StaticResource ResearcherListView}}"></ListBox>
-  
         </ListBox>
-
-
-
     </Grid>
     
 
