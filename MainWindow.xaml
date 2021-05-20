@@ -14,20 +14,28 @@
         xmlns:local="clr-namespace:A2SDD"
         xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher">
 
-    <Window.Resources>
-        <local:Researcher x:Key="Researcher" />
-    </Window.Resources>
-    
-    <Window.DataContext>
-        <local:Researcher/>
-    </Window.DataContext>
 
-    <Grid MinWidth="50" HorizontalAlignment="Left">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:Researcher}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=FamilyName}"/>
+                <TextBlock Text=", "/>
+                <TextBlock Text="{Binding Path=GivenName}"/>
+                </StackPanel>
+                </DataTemplate>
+    </Window.Resources>
+    <Grid
+        MinWidth="50" HorizontalAlignment="Left">
+
+
         <ListBox x:Name="ResearcherListView" Margin="1,1,0,1" Opacity="0.95" Background="#FFCCCCCC" Grid.Row="1" HorizontalAlignment="Left" MinWidth="50" Width="150" HorizontalContentAlignment="Left">
-            <ListBox ItemsSource="{Binding Source={StaticResource ResearcherListView}}"></ListBox>
+            <ListBox SelectionChanged="ListBox_SelectionChanged"
+                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}"/>
+
         </ListBox>
+        
     </Grid>
-    
+
 
 </Window>
 

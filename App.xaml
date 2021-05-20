@@ -4,15 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:A2SDD"
              xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              
              
              StartupUri="MainWindow.xaml">
 
             <Application.Resources>
-        <local:Researcher x:Key="Researcher"/>
-            <ObjectDataProvider x:Key="ResearcherListView"
-             ObjectInstance="{StaticResource Researcher}"
-             MethodName="GetViewableList">
+        <ObjectDataProvider x:Key="ResearcherListView"
+                            ObjectType="{x:Type local:Researcher}"
+                            MethodName="GetViewableList">
         </ObjectDataProvider>
+        
     </Application.Resources>
 </Application>

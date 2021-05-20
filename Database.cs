@@ -9,7 +9,6 @@ using MySql.Data.Types;
 
 namespace A2SDD
 {
-
     abstract class Database
     {
         private const string db = "kit206";
