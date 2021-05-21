@@ -88,7 +88,7 @@ namespace A2SDDWPF
 		private void FilterClickStar(object sender, RoutedEventArgs e)
 		{
 			List<Researcher> rl = Database.LoadReseacherListView();
-			rl = Report.OrderByPerformance(rl, "StarPerformers");
+			rl = Report.OrderByPerformance(rl, "StarPerformer");
 			String report = ListToString(rl);
 			MessageBox.Show("Researchers that are Star Performers:\n" + report);
 		}

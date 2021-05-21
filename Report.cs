@@ -16,24 +16,51 @@ namespace A2SDD
 		}
 		public static List<Researcher> OrderByPerformance(List<Researcher> rl, String ReportLevel)
 		{
-			//sorted list of researchers by performance
-			/* ReportLevel level = ParseEnum<ReportLevel>(ReportLevel);
-			List<Researcher> sorted;
-			float performance = 0;
-			int maxID;
-			int maxPerformance = 99999;
+			
+			List<Researcher> filtered = new List<Researcher>();
+			int lowcutoff = 0;
+			int highcutoff = 0;
 
-			for (int i = 0; i < rl.Count(); i++)
+			ReportLevel l = ParseEnum<ReportLevel>(ReportLevel);
+
+			switch (l)
 			{
+				case A2SDD.ReportLevel.Poor:
+					{
+						lowcutoff = -1;
+						highcutoff = 70;
+						break;
+					}
+				case A2SDD.ReportLevel.BelowExpectations:
+					{
+						lowcutoff = 70;
+						highcutoff = 110;
+						break;
+					}
+				case A2SDD.ReportLevel.MeetingMinimum:
+					{
+						lowcutoff = 110;
+						highcutoff = 200;
+						break;
+					}
+				case A2SDD.ReportLevel.StarPerformer:
+					{
+						lowcutoff = 200;
+						highcutoff = int.MaxValue;
+						break;
+					}
+			}
 
-				if (performance < Staff.Performance(rl[i]))
+			foreach(Researcher r in rl)
+			{
+				if (Staff.Performance(r) > lowcutoff && Staff.Performance(r) <= highcutoff)
 				{
-					performance = Staff.Performance(rl[i]);
-					maxID = rl[i].ID;
+					filtered.Add(r);
 				}
-			} */
-			return rl;
-
+			}
+			return filtered;
+			
+			//return rl;
 
 		}
 	}

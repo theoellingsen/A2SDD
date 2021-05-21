@@ -26,29 +26,59 @@ namespace A2SDD
             //Initiate database object (will be replaced with PublicationController at later date)
 
             // Create list of publications from given researcher
-            List<Publication> publications = new List<Publication>(Database.LoadPublications(ID));
+            DateTime start = new DateTime(2012, 1, 1);
+            DateTime end = new DateTime(2015, 1, 1);
+            int publications = Database.LoadPublications3YearAVerage(ID, start, end);
 
             // Select the publications less than three years old
-            int cutoff = DateTime.Today.Year - 3;
-
-            IEnumerable<Publication> selected =
-                from Publication in publications
-                where Publication.Year.Year >= cutoff
-                select Publication;
+           
 
             // Create list pf publications from selected
-            List<Publication> lastThree = new List<Publication>(selected);
+          
 
             // Return average over three years
-            return lastThree.Count() / 3;
+            return publications / 3;
         }
 
         public static float Performance(Researcher r)
         {
             // Performance is three year average divided by performance level
-            return ThreeYearAverage(r.ID) / (float)r.Positions[0].Level * 10;
+            if (r.Positions.Count == 0)
+			{
+                return -1;
+			} else
+			{
+                float value=0;
+				switch (r.Positions[0].Level)
+				{
+                    case A2SDD.Level.A:
+					{
+                            value = 5;
+                            break;
+					}
+                    case A2SDD.Level.B:
+                        {
+                            value = 10;
+                            break;
+                        }
+                    case A2SDD.Level.C:
+                        {
+                            value = 20;
+                            break;
+                        }
+                    case A2SDD.Level.D:
+                        {
+                            value = 32;
+                            break;
+                        }
+                    case A2SDD.Level.E:
+                        {
+                            value = 40;
+                            break;
+                        }
+                }
+                return (ThreeYearAverage(r.ID) / (value/10))*100;
+            }
         }
-
-
     }
 }

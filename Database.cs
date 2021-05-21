@@ -38,32 +38,42 @@ namespace A2SDD
             return conn;
         }
 
+        private static DateTime IfNotNull(DateTime t)
+		{
+            if (t != null)
+			{
+                return DateTime.Today;
+			} else
+			{
+                return t;
+			}
+		}
 
-        public static List<Researcher> LoadReseacherListView()
+        public static List<Position> LoadPosition(Researcher r)
         {
-            List<Researcher> researchers = new List<Researcher>();
 
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
-
             try
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT id, given_name, family_name, title FROM researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT level, start, end FROM position where position.id=?id", conn);
 
+                cmd.Parameters.AddWithValue("id", r.ID);
+                
                 rdr = cmd.ExecuteReader();
 
+
+                r.Positions = new List<Position>();
                 while (rdr.Read())
                 {
-                    researchers.Add(new Researcher
-                    {
-                        ID = rdr.GetInt32(0),
-                        GivenName = rdr.GetString(1),
-                        FamilyName = rdr.GetString(2),
-                        Title = rdr.GetString(3),
 
-                    }) ;
+                    r.Positions.Add(new Position
+                    {
+                        Level = ParseEnum<Level>(rdr.GetString(0)),
+                        Start = rdr.GetDateTime(1)
+                    });
                 }
             }
             catch (MySqlException e)
@@ -81,6 +91,91 @@ namespace A2SDD
                     conn.Close();
                 }
             }
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT end FROM position where position.id=?id and end IS NOT NULL", conn);
+
+                cmd.Parameters.AddWithValue("id", r.ID);
+
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+
+                    r.Positions.Add(new Position
+                    {
+                        End = rdr.GetDateTime(0)
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return r.Positions;
+        }
+
+
+        public static List<Researcher> LoadReseacherListView()
+        {
+            List<Researcher> researchers = new List<Researcher>();
+
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT id, given_name, family_name, title FROM researcher", conn);
+
+                rdr = cmd.ExecuteReader();
+
+                MySqlCommand PositionResearcher = new MySqlCommand("");
+
+                while (rdr.Read())
+                {
+                    researchers.Add(new Researcher
+                    {
+                        ID = rdr.GetInt32(0),
+                        GivenName = rdr.GetString(1),
+                        FamilyName = rdr.GetString(2),
+                        Title = rdr.GetString(3),
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            foreach (Researcher r in researchers)
+			{
+                r.Positions = LoadPosition(r);
+			}
 
             return researchers;
         }
@@ -97,7 +192,7 @@ namespace A2SDD
 
                 MySqlCommand cmd = new MySqlCommand("select unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start " +
                                                     "from researcher " +
-                                                    "where resercher_id=?id", conn);
+                                                    "where researcher_id=?id", conn);
 
                 MySqlCommand PositionResearcher = new MySqlCommand("");
 
@@ -155,38 +250,25 @@ namespace A2SDD
         /// <param name="id"></param>
         /// <returns>Filtered List of publications</returns>
 
-        public static List<Publication> LoadPublications(int id)
+        public static int LoadPublications3YearAVerage(int id, DateTime startYear, DateTime endYear)
         {
             List<Publication> filtered = new List<Publication>();
+            int count = 0;
 
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
 
             try
             {
+                
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select title, year, type, available " +
-                                                    "from publication as pub, researcher_publication as respub " +
-                                                    "where pub.doi=respub.doi and researcher_id=?id", conn);
-
-
+                MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
+                                                    "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
                 cmd.Parameters.AddWithValue("id", id);
-                rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    filtered.Add(new Publication
-                    {
-                        DOI = rdr.GetString(0),
-                        Title = rdr.GetString(1),
-                        Authors = rdr.GetString(2),
-                        Year = rdr.GetDateTime(3),
-                        //  Type = ParseEnum<Type>(rdr.GetString(4)),
-                        CiteAs = rdr.GetString(5),
-                        Available = rdr.GetDateTime(6)
-                    });
-                }
+                cmd.Parameters.AddWithValue("start", startYear);
+                cmd.Parameters.AddWithValue("end", endYear);
+                count = Int32.Parse(cmd.ExecuteScalar().ToString());
             }
             catch (MySqlException e)
             {
@@ -203,8 +285,7 @@ namespace A2SDD
                     conn.Close();
                 }
             }
-
-            return filtered;
+            return count;
         }
 
         //Optional part of step 2.3.4 in Week 8 tutorial illustrating that some answers can be obtained by directly querying the database.
