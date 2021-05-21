@@ -14,11 +14,10 @@ namespace A2SDD
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="p"></param>
         /// <returns></returns
-        public String Title(Position p)
+        public String Title()
         {
-            return ToTitle(p.Level);
+            return ToTitle(Level);
         }
 
         /// <summary>

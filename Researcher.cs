@@ -48,7 +48,7 @@ namespace A2SDD
 
         String CurrentJobTitle(Researcher r)
         {
-            return r.Positions[0].Title(Positions[0]);
+            return r.Positions[0].Title();
         }
 
         DateTime CurrentJobStart(Researcher r)
