@@ -41,22 +41,22 @@ namespace A2SDD
             return oc;
 		}
 
-        Position CurrentJob(Researcher r)
+        public Position CurrentJob(Researcher r)
         {
             return r.Positions[0];
         }
 
-        String CurrentJobTitle(Researcher r)
+        public String CurrentJobTitle(Researcher r)
         {
             return r.Positions[0].Title();
         }
 
-        DateTime CurrentJobStart(Researcher r)
+        public DateTime CurrentJobStart(Researcher r)
         {
             return r.Positions[0].Start;
         }
 
-        Position GetEarliestJob(Researcher r)
+        public Position GetEarliestJob(Researcher r)
         {
             int length;
             length = Positions.Count;
@@ -64,18 +64,18 @@ namespace A2SDD
             return r.Positions[length];
         }
 
-        DateTime EarliestStart(Researcher r)
+        public DateTime EarliestStart(Researcher r)
         {
             Position p = GetEarliestJob(r);
             return p.Start;
         }
 
-        float Tenure(Researcher r)
+        public float Tenure(Researcher r)
         {
             DateTime tenure = EarliestStart(r);
             return tenure.CompareTo(DateTime.Now);
         }
-        int PublicationsCount(Researcher r)
+        public int PublicationsCount(Researcher r)
         {
             return r.Publications.Count;
         }
