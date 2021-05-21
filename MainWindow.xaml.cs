@@ -28,7 +28,7 @@ namespace A2SDDWPF
 		private const string RESEARCHER_LIST_KEY = "ResearcherListView";
 		public MainWindow()
 		{
-			InitializeComponent();
+		InitializeComponent();
 
 			researcher = (Researcher)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
