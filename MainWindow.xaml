@@ -29,13 +29,12 @@
     </Window.Resources>
     <Grid
         MinWidth="50" HorizontalAlignment="Left">
-        <ListBox x:Name="ResearcherListView" Margin="1,1,0,1" Opacity="0.95" Background="#FFCCCCCC" Grid.Row="1" HorizontalAlignment="Left" MinWidth="50" HorizontalContentAlignment="Left">
+        <ListBox x:Name="ResearcherListView" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC" Grid.Row="1" HorizontalAlignment="Left" MinWidth="50" HorizontalContentAlignment="Left">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
                  ItemsSource="{Binding Source={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
             <TextBox Text="Enter Search Here" IsReadOnly ="True" TextWrapping="Wrap" Width="143.496666666667" Height="18" Margin="0,0,0,3"/>
         </ListBox>
         <DockPanel LastChildFill="False">
-            <TextBox AcceptsReturn="True"/>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Filter">
                     <MenuItem Header="A"/>
