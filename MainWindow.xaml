@@ -26,18 +26,23 @@
                 <TextBlock Text=")"/>
             </StackPanel>
         </DataTemplate>
+
+        
     </Window.Resources>
+    
+    
     <Grid
+        
         MinWidth="50" HorizontalAlignment="Left">
         <ListBox x:Name="ResearcherListView" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC" Grid.Row="1" HorizontalAlignment="Left" MinWidth="50" HorizontalContentAlignment="Left">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
                  ItemsSource="{Binding Source={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
-            <TextBox Text="Enter Search Here" IsReadOnly ="True" TextWrapping="Wrap" Width="143.496666666667" Height="18" Margin="0,0,0,3"/>
+            <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" Width="143.496666666667" Height="18" Margin="0,0,0,3"/>
         </ListBox>
         <DockPanel LastChildFill="False">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Filter">
-                    <MenuItem Header="A"/>
+                    <MenuItem Header="A" />
                     <MenuItem Header="B"/>
                     <MenuItem Header="C"/>
                     <MenuItem Header="D"/>
@@ -45,10 +50,10 @@
                 </MenuItem>
 
                 <MenuItem Header="Generate Report">
-                    <MenuItem Header="Poor"/>
-                    <MenuItem Header="Below Expectations"/>
-                    <MenuItem Header="Meeting Minimum"/>
-                    <MenuItem Header="Star Performers"/>
+                    <MenuItem Header="Poor" Click="FilterClickPoor"/>
+                    <MenuItem Header="Below Expectations" Click="FilterClickBelow"/>
+                    <MenuItem Header="Meeting Minimum" Click="FilterClickMeeting"/>
+                    <MenuItem Header="Star Performers" Click="FilterClickStar"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
