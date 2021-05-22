@@ -6,6 +6,8 @@ namespace A2SDD
 {
 
     public enum Campus { Hobart, Launceston, CradleCoast }
+
+    public enum Type { Staff, Student }
     class Researcher
     {
         public int ID { get; set; }
@@ -18,8 +20,6 @@ namespace A2SDD
 
         public String Title { get; set; }
 
-        public String School { get; set; }
-
         public String Unit { get; set; }
 
         public Campus Campus { get; set; }
@@ -27,6 +27,10 @@ namespace A2SDD
         public String Email { get; set; }
 
         public String Photo { get; set; }
+
+        public DateTime Start { get; set; }
+
+        public DateTime CurrentStart { get; set; }
 
         public List<Position> Positions { get; set; }
 
