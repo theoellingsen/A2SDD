@@ -6,18 +6,10 @@ using System.Linq;
 namespace A2SDD
 {
     //ESSENTIAL
-
+    enum PublicationLevel { A, B, C, D, E }
     class Staff : Researcher
     {
-        private enum PublicationLevel
-        {
-            A = 5,
-            B = 10,
-            C = 20,
-            D = 32,
-            E = 40,
-        }
-
+        
         private PublicationLevel Level { get; set; }
 
 
@@ -51,27 +43,27 @@ namespace A2SDD
                 float value=0;
 				switch (r.Positions[0].Level)
 				{
-                    case A2SDD.Level.A:
+                    case EmploymentLevel.A:
 					{
                             value = 5;
                             break;
 					}
-                    case A2SDD.Level.B:
+                    case EmploymentLevel.B:
                         {
                             value = 10;
                             break;
                         }
-                    case A2SDD.Level.C:
+                    case EmploymentLevel.C:
                         {
                             value = 20;
                             break;
                         }
-                    case A2SDD.Level.D:
+                    case EmploymentLevel.D:
                         {
                             value = 32;
                             break;
                         }
-                    case A2SDD.Level.E:
+                    case EmploymentLevel.E:
                         {
                             value = 40;
                             break;

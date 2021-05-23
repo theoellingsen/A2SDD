@@ -4,21 +4,20 @@ using System.Text;
 
 namespace A2SDD
 {
-    enum Level { A, B, C, D, E }
+    enum EmploymentLevel { Student, A, B, C, D, E }
     class Position
     {
-        public Level Level { get; set; }
+        public EmploymentLevel Level { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="p"></param>
         /// <returns></returns
-        public String Title(Position p)
+        public String Title()
         {
-            return ToTitle(p.Level);
+            return ToTitle(Level);
         }
 
         /// <summary>
@@ -26,29 +25,33 @@ namespace A2SDD
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        public String ToTitle(Level l)
+        public String ToTitle(EmploymentLevel l)
         {
-            if (l.CompareTo("A") == 0)
+            String levelName = l.ToString();
+
+            switch (levelName)
             {
-                return "Postdoc";
+                case "Student":
+                    return "Student";
+                case "A":
+                    return "Postdoc";
+
+                case "B":
+                    return "Lecturer";
+
+                case "C":
+                    return "Senior Lecturer";
+
+                case "D":
+                    return "Associate Professor";
+
+                case "E":
+                    return "Professor";
+
+                default:
+                    return "No employment level";
+
             }
-            else if (l.CompareTo("B") == 0)
-            {
-                return "Lecturer";
-            }
-            else if (l.CompareTo("C") == 0)
-            {
-                return "Senior Lecturer";
-            }
-            else if (l.CompareTo("D") == 0)
-            {
-                return "Associate Professor";
-            }
-            else if (l.CompareTo("E") == 0)
-            {
-                return "Professor";
-            }
-            return "NULL";
         }
 
 

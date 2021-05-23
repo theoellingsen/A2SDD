@@ -71,8 +71,8 @@ namespace A2SDD
 
                     r.Positions.Add(new Position
                     {
-                        Level = ParseEnum<Level>(rdr.GetString(0)),
-                        Start = rdr.GetDateTime(1)
+                        Level = ParseEnum<EmploymentLevel>(rdr.GetString(0)),
+                        Start = rdr.GetDateTime(1),
                     });
                 }
             }
@@ -180,46 +180,34 @@ namespace A2SDD
             return researchers;
         }
 
+        
         public static Researcher LoadReseacherDetailsView(Researcher r)
         {
             MySqlConnection conn = GetConnection();
-            MySqlDataReader rdra = null; 
-            MySqlDataReader rdrb = null;
+            MySqlDataReader rdr = null; 
 
             try
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select unit, campus, email, photo, degree, supervisor_id, level, utas_start, current_start " +
+                MySqlCommand cmd = new MySqlCommand("select type, unit, campus, email, photo, utas_start, current_start " +
                                                     "from researcher " +
                                                     "where researcher_id=?id", conn);
 
-                MySqlCommand PositionResearcher = new MySqlCommand("");
-
                 cmd.Parameters.AddWithValue("id", r.ID);
-                rdra = cmd.ExecuteReader();
+                rdr = cmd.ExecuteReader();
 
-                while (rdra.Read())
+                while (rdr.Read())
                 {
-                    r.School = rdra.GetString(5);
-                    r.Unit = rdra.GetString(6);
-                    r.Campus = ParseEnum<Campus>(rdra.GetString(7));
-                    r.Email = rdra.GetString(8);
-                    r.Photo = rdra.GetString(9);
+                    r.Type = ParseEnum<Type>(rdr.GetString(0));
+                    r.Unit = rdr.GetString(1);
+                    r.Campus = ParseEnum<Campus>(rdr.GetString(2));
+                    r.Email = rdr.GetString(3);
+                    r.Photo = rdr.GetString(4);
+                    r.Start = rdr.GetDateTime(5);
+                    r.CurrentStart = rdr.GetDateTime(6);
                 }
 
-                PositionResearcher.Parameters.AddWithValue("id", r.ID);
-                rdrb = PositionResearcher.ExecuteReader();
-
-                while (rdrb.Read())
-                {
-                    r.Positions.Add(new Position 
-                    {
-                        Level = ParseEnum<Level>(rdrb.GetString(4)),
-                        Start = rdrb.GetDateTime(5),
-                        End = rdrb.GetDateTime(6)
-                    });
-                }
             }
             catch (MySqlException e)
             {
@@ -227,13 +215,9 @@ namespace A2SDD
             }
             finally
             {
-                if (rdra != null)
+                if (rdr != null)
                 {
-                    rdra.Close();
-                }
-                if (rdrb != null)
-                {
-                    rdrb.Close();
+                    rdr.Close();
                 }
                 if (conn != null)
                 {
@@ -243,6 +227,8 @@ namespace A2SDD
 
             return r;
         }
+        
+
 
         /// <summary>
         /// Filter for publications
