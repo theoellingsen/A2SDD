@@ -38,6 +38,8 @@ namespace A2SDD
 
         public float Performance { get; set; }
 
+        
+
        
         public ObservableCollection<Researcher> getReport(String level)
 		{

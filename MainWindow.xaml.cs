@@ -15,6 +15,10 @@ using System.Windows.Shapes;
 using A2SDDWPF;
 using A2SDD;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.CompilerServices;
 
 namespace A2SDDWPF
 {
@@ -24,6 +28,8 @@ namespace A2SDDWPF
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		event System.ComponentModel.PropertyChangedEventHandler? PropertyChanged;
+		
 		enum ReportLevel { Poor, BelowExpectations, MeetingMinimum, StarPerformer }
 		private Researcher researcher;
 		private const string RESEARCHER_LIST_KEY = "ResearcherListView";
@@ -31,15 +37,19 @@ namespace A2SDDWPF
 		{
 		InitializeComponent();
 
-			researcher = (Researcher)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+		researcher = (Researcher)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
 
 		private void ResearcherListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			ResearcherListView.Items.Add(e);
+			if (e.AddedItems.Count > 0)
+			{
+				ResearcherListView.DataContext = e.AddedItems[0];
+
+			}
 		}
 
-		private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+	private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
 		{
 
 		}
@@ -91,5 +101,47 @@ namespace A2SDDWPF
 			String report = ListToString(rl);
 			MessageBox.Show("Researchers that are Star Performers:\n" + report);*/
 		}
+		
+		private void FilterClickA(object sender, RoutedEventArgs e)
+		{
+		
+			ObjectDataProvider listProvider = (ObjectDataProvider)FindResource("ResearcherListView");
+			var x = listProvider.Data;
+			ObservableCollection<Researcher> r = new ObservableCollection<Researcher>();
+
+			r = (ObservableCollection<Researcher>)x;
+
+			ObservableCollection<Researcher> filtered = new ObservableCollection<Researcher>();
+			
+			foreach (Researcher researcher in r)
+			{
+				if (researcher.Positions.Count == 0 || researcher.Positions[0].Level != EmploymentLevel.A)
+				{
+					filtered.Add(researcher);
+				}
+			}
+			foreach (Researcher item in filtered)
+			{
+				((ObservableCollection<Researcher>)ResearcherListView.ItemsSource).Remove(item);
+			}
+		}
+		private void FilterClickB(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void FilterClickC(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void FilterClickD(object sender, RoutedEventArgs e)
+		{
+
+		}
+		private void FilterClickE(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
+
 }
+

@@ -5,16 +5,18 @@
              xmlns:local="clr-namespace:A2SDD"
              xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher"
              xmlns:Report="clr-A2SDD:Report;assembly=Report"
+             xmlns:Database="clr-A2SDD:Database;assembly=Database"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              
              
              StartupUri="MainWindow.xaml">
 
-            <Application.Resources>
+    <Application.Resources>
         <ObjectDataProvider x:Key="ResearcherListView"
                             ObjectType="{x:Type local:Researcher}"
                             MethodName="GetViewableList">
         </ObjectDataProvider>
+        
 
 
 
