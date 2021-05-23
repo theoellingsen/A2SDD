@@ -3,6 +3,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:A2SDD"
+             xmlns:locala="clr-namespace:A2SDDWPF"
              xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher"
              xmlns:Report="clr-A2SDD:Report;assembly=Report"
              xmlns:Database="clr-A2SDD:Database;assembly=Database"
@@ -12,11 +13,12 @@
              StartupUri="MainWindow.xaml">
 
     <Application.Resources>
-        <ObjectDataProvider x:Key="ResearcherListView"
-                            ObjectType="{x:Type local:Researcher}"
+        <locala:ResearcherController x:Key="controller"></locala:ResearcherController>
+        <ObjectDataProvider x:Key="researcherListView"
+                            ObjectInstance="{StaticResource Reseacher}"
                             MethodName="GetViewableList">
         </ObjectDataProvider>
-        
+
 
 
 

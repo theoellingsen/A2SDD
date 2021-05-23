@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
+using A2SDDWPF;
+
 namespace A2SDD
 {
 
     public enum Campus { Hobart, Launceston, CradleCoast }
 
     public enum Type { Staff, Student }
-    class Researcher
+    class Researcher : ResearcherController
     {
         public int ID { get; set; }
 
@@ -46,12 +48,12 @@ namespace A2SDD
             ObservableCollection<Researcher> ol = Report.OrderByPerformance(level);
             return ol;
 		}
-       public ObservableCollection<Researcher> GetViewableList()
+       /*public ObservableCollection<Researcher> GetViewableList()
 		{
             List<Researcher> rl = Database.LoadReseacherListView();
             ObservableCollection<Researcher> oc = new ObservableCollection<Researcher>(rl);
             return oc;
-		}
+		}*/
 
         public Position CurrentJob(Researcher r)
         {

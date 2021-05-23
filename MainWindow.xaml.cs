@@ -31,13 +31,13 @@ namespace A2SDDWPF
 		event System.ComponentModel.PropertyChangedEventHandler? PropertyChanged;
 		
 		enum ReportLevel { Poor, BelowExpectations, MeetingMinimum, StarPerformer }
-		private Researcher researcher;
+		private ResearcherController researcher;
 		private const string RESEARCHER_LIST_KEY = "ResearcherListView";
 		public MainWindow()
 		{
 		InitializeComponent();
 
-		researcher = (Researcher)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+		researcher = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
 
 		private void ResearcherListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
