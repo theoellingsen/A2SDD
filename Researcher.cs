@@ -39,7 +39,11 @@ namespace A2SDD
         public float Performance { get; set; }
 
        
-
+        public ObservableCollection<Researcher> getReport(String level)
+		{
+            ObservableCollection<Researcher> ol = Report.OrderByPerformance(level);
+            return ol;
+		}
        public ObservableCollection<Researcher> GetViewableList()
 		{
             List<Researcher> rl = Database.LoadReseacherListView();

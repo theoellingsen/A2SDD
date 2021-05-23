@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:A2SDD"
              xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher"
+             xmlns:Report="clr-A2SDD:Report;assembly=Report"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              
              
@@ -14,6 +15,15 @@
                             ObjectType="{x:Type local:Researcher}"
                             MethodName="GetViewableList">
         </ObjectDataProvider>
-        
+
+
+
+        <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
+                      MethodName="getReport" x:Key="PoorListView"> 
+            <ObjectDataProvider.MethodParameters>
+                <sys:String>Poor</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
     </Application.Resources>
 </Application>

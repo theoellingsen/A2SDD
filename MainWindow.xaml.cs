@@ -62,35 +62,38 @@ namespace A2SDDWPF
 		}
 		private void FilterClickPoor(object sender, RoutedEventArgs e)
 		{
-			List<Researcher> rl = Database.LoadReseacherListView();
+			Poor p = new Poor();
+			p.Show();
+			
+			/*List<Researcher> rl = Database.LoadReseacherListView();
 			rl = Report.OrderByPerformance(rl, "Poor");
 			String report = ListToString(rl);
-			MessageBox.Show("Poor Performers:\n"+ report);
+			MessageBox.Show("Poor Performers:\n"+ report);*/
 			
 		}
 
 		private void FilterClickBelow(object sender, RoutedEventArgs e)
 		{
-			List<Researcher> rl = Database.LoadReseacherListView();
+			/*List<Researcher> rl = Database.LoadReseacherListView();
 			rl = Report.OrderByPerformance(rl, "BelowExpectations");
 			String report = ListToString(rl);
-			MessageBox.Show("Researchers with Performance Below Expectations:\n" + report);
+			MessageBox.Show("Researchers with Performance Below Expectations:\n" + report);*/
 		}
 
 		private void FilterClickMeeting(object sender, RoutedEventArgs e)
 		{
-			List<Researcher> rl = Database.LoadReseacherListView();
+			/*List<Researcher> rl = Database.LoadReseacherListView();
 			rl = Report.OrderByPerformance(rl, "MeetingMinimum");
 			String report = ListToString(rl);
-			MessageBox.Show("Researchers with Performance Meeting Minimum Requirements:\n" + report);
+			MessageBox.Show("Researchers with Performance Meeting Minimum Requirements:\n" + report);*/
 		}
 
 		private void FilterClickStar(object sender, RoutedEventArgs e)
 		{
-			List<Researcher> rl = Database.LoadReseacherListView();
+			/*List<Researcher> rl = Database.LoadReseacherListView();
 			rl = Report.OrderByPerformance(rl, "StarPerformer");
 			String report = ListToString(rl);
-			MessageBox.Show("Researchers that are Star Performers:\n" + report);
+			MessageBox.Show("Researchers that are Star Performers:\n" + report);*/
 		}
 	}
 }
