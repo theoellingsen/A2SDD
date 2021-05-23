@@ -32,7 +32,7 @@ namespace A2SDD
             return publications / 3;
         }
 
-        public static float Performance(Researcher r)
+        public static float calcPerformance(Researcher r)
         {
             // Performance is three year average divided by performance level
             if (r.Positions.Count == 0)

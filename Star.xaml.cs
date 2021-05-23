@@ -14,20 +14,20 @@ using A2SDD;
 namespace A2SDDWPF
 {
 	/// <summary>
-	/// Interaction logic for Poor.xaml
+	/// Interaction logic for Star.xaml
 	/// </summary>
-	public partial class Poor : Window
+	public partial class Star : Window
 	{
 		private Researcher r;
-		private const string POOR_LIST_KEY = "PoorListView";
-		public Poor()
+		private const string STAR_LIST_KEY = "StarListView";
+		public Star()
 		{
 			InitializeComponent();
-			r = (Researcher)(Application.Current.FindResource(POOR_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+			r = (Researcher)(Application.Current.FindResource(STAR_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
 		private void ResearcherListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			PoorListView.Items.Add(e);
+			StarListView.Items.Add(e);
 		}
 
 		private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace A2SDDWPF
 
 		}
 
-		private void PoorListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void StarListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
 		}

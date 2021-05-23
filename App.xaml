@@ -25,5 +25,26 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
 
+        <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
+                      MethodName="getReport" x:Key="BelowListView">
+            <ObjectDataProvider.MethodParameters>
+                <sys:String>BelowExpectations</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
+                      MethodName="getReport" x:Key="MeetingListView">
+            <ObjectDataProvider.MethodParameters>
+                <sys:String>MeetingMinimum</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
+        <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
+                      MethodName="getReport" x:Key="StarListView">
+            <ObjectDataProvider.MethodParameters>
+                <sys:String>StarPerformer</sys:String>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+
     </Application.Resources>
 </Application>

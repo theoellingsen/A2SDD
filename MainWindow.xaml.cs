@@ -64,24 +64,18 @@ namespace A2SDDWPF
 		{
 			Poor p = new Poor();
 			p.Show();
-			
-			/*List<Researcher> rl = Database.LoadReseacherListView();
-			rl = Report.OrderByPerformance(rl, "Poor");
-			String report = ListToString(rl);
-			MessageBox.Show("Poor Performers:\n"+ report);*/
-			
 		}
 
 		private void FilterClickBelow(object sender, RoutedEventArgs e)
 		{
-			/*List<Researcher> rl = Database.LoadReseacherListView();
-			rl = Report.OrderByPerformance(rl, "BelowExpectations");
-			String report = ListToString(rl);
-			MessageBox.Show("Researchers with Performance Below Expectations:\n" + report);*/
+			Below b = new Below();
+			b.Show();
 		}
 
 		private void FilterClickMeeting(object sender, RoutedEventArgs e)
 		{
+			Meeting m = new Meeting();
+			m.Show();
 			/*List<Researcher> rl = Database.LoadReseacherListView();
 			rl = Report.OrderByPerformance(rl, "MeetingMinimum");
 			String report = ListToString(rl);
@@ -90,6 +84,8 @@ namespace A2SDDWPF
 
 		private void FilterClickStar(object sender, RoutedEventArgs e)
 		{
+			Star s = new Star();
+			s.Show();
 			/*List<Researcher> rl = Database.LoadReseacherListView();
 			rl = Report.OrderByPerformance(rl, "StarPerformer");
 			String report = ListToString(rl);

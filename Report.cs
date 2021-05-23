@@ -7,15 +7,6 @@ using System.Collections.ObjectModel;
 namespace A2SDD
 {
 	enum ReportLevel {Poor, BelowExpectations, MeetingMinimum, StarPerformer}
-
-	/*
-	 *  <ObjectDataProvider ObjectType="{x:Type local:Researcher}" 
-                      MethodName="OrderByPerformance" x:Key="poorListView">
-            <ObjectDataProvider.MethodParameters>
-                <sys:String>Poor</sys:String>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-	*/
 	class Report : Researcher
 	{
 		public static T ParseEnum<T>(string value)
@@ -68,17 +59,29 @@ namespace A2SDD
 
 			foreach(Researcher r in rl)
 			{
-				if (Staff.Performance(r) > lowcutoff && Staff.Performance(r) <= highcutoff)
+				if (Staff.calcPerformance(r) > lowcutoff && Staff.calcPerformance(r) <= highcutoff)
 				{
 					filtered.Add(r);
 				}
 			}
 
-			var ordered = from r in filtered
-								orderby r.Performance
-								select r; ;
+			IOrderedEnumerable<Researcher> x;
+			if ((l == A2SDD.ReportLevel.BelowExpectations) || (l == A2SDD.ReportLevel.Poor))
+			{
+				 var ordered = from r in filtered
+							  orderby r.Performance
+							  select r; ;
+				x = ordered;
+			} else
+			{
+				 var ordered = from r in filtered
+							  orderby r.Performance descending
+							  select r; ;
+				x = ordered;
+			}
+			
 
-			ObservableCollection<Researcher> ol = CreateObservable<Researcher>(ordered);
+			ObservableCollection<Researcher> ol = CreateObservable<Researcher>(x);
 			return ol;
 		}
 	}

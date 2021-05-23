@@ -14,20 +14,20 @@ using A2SDD;
 namespace A2SDDWPF
 {
 	/// <summary>
-	/// Interaction logic for Poor.xaml
+	/// Interaction logic for Meeting.xaml
 	/// </summary>
-	public partial class Poor : Window
+	public partial class Meeting : Window
 	{
 		private Researcher r;
-		private const string POOR_LIST_KEY = "PoorListView";
-		public Poor()
+		private const string MEETING_LIST_KEY = "MeetingListView";
+		public Meeting()
 		{
 			InitializeComponent();
-			r = (Researcher)(Application.Current.FindResource(POOR_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+			r = (Researcher)(Application.Current.FindResource(MEETING_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
 		private void ResearcherListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			PoorListView.Items.Add(e);
+			MeetingListView.Items.Add(e);
 		}
 
 		private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace A2SDDWPF
 
 		}
 
-		private void PoorListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void MeetingListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
 		}
