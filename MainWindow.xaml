@@ -9,7 +9,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="CanResize" MinHeight="450" MinWidth="800"
         xmlns:c="clr-namespace:A2SDD"
         xmlns:local="clr-namespace:A2SDD"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
@@ -31,13 +31,11 @@
         </DataTemplate>
     </Window.Resources>
     
-    <Grid
-        
-        MinWidth="50" HorizontalAlignment="Left">
-        <ListBox x:Name="ResearcherListView" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC" Grid.Row="1" HorizontalAlignment="Left" MinWidth="50" HorizontalContentAlignment="Left">
+    <Grid Margin="0,0,625,0">
+        <ListBox x:Name="ResearcherListView" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
                  ItemsSource="{Binding Source={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
-            <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" Width="143.496666666667" Height="18" Margin="0,0,0,3"/>
+            <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" />
         </ListBox>
 
         <DockPanel LastChildFill="False">
