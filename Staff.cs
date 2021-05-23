@@ -9,9 +9,6 @@ namespace A2SDD
     enum PublicationLevel { A, B, C, D, E }
     class Staff : Researcher
     {
-        
-        private PublicationLevel Level { get; set; }
-
 
         public static float ThreeYearAverage(int ID)
         {
