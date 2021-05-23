@@ -77,6 +77,7 @@ namespace A2SDD
                             break;
                         }
                 }
+                r.Performance = (ThreeYearAverage(r.ID) / (value / 10))*100;
                 return (ThreeYearAverage(r.ID) / (value/10))*100;
             }
         }

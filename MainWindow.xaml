@@ -12,7 +12,10 @@
         Title="MainWindow" Height="450" Width="800"
         xmlns:c="clr-namespace:A2SDD"
         xmlns:local="clr-namespace:A2SDD"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher">
+
+
 
 
     <Window.Resources>
@@ -26,10 +29,7 @@
                 <TextBlock Text=")"/>
             </StackPanel>
         </DataTemplate>
-
-        
     </Window.Resources>
-    
     
     <Grid
         
@@ -39,6 +39,7 @@
                  ItemsSource="{Binding Source={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
             <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" Width="143.496666666667" Height="18" Margin="0,0,0,3"/>
         </ListBox>
+
         <DockPanel LastChildFill="False">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Filter">
@@ -58,6 +59,9 @@
             </Menu>
         </DockPanel>
     </Grid>
+    
 
 </Window>
+    
+    
 
