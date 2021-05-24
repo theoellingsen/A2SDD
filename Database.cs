@@ -227,8 +227,116 @@ namespace A2SDD
 
             return r;
         }
-        
 
+        public static Staff LoadStaff(Researcher r)
+        {
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            Staff changed = new Staff();
+
+            changed.ID = r.ID;
+            changed.GivenName = r.GivenName;
+            changed.FamilyName = r.FamilyName;
+            changed.Title = r.Title;
+            changed.Type = r.Type;
+            changed.Unit = r.Unit;
+            changed.Campus = r.Campus;
+            changed.Email = r.Email;
+            changed.Photo = r.Photo; ;
+            changed.Start = r.Start;
+            changed.CurrentStart = r.CurrentStart;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select level" +
+                                                    "from researcher " +
+                                                    "where researcher_id=?id", conn);
+
+                cmd.Parameters.AddWithValue("id", r.ID);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return changed;
+        }
+
+        public static Student LoadStudent(Researcher r)
+        {
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            Student changed = new Student();
+
+            changed.ID = r.ID;
+            changed.GivenName = r.GivenName;
+            changed.FamilyName = r.FamilyName;
+            changed.Title = r.Title;
+            changed.Type = r.Type;
+            changed.Unit = r.Unit;
+            changed.Campus = r.Campus;
+            changed.Email = r.Email;
+            changed.Photo = r.Photo; ;
+            changed.Start = r.Start;
+            changed.CurrentStart = r.CurrentStart;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select degree, supervisor_id" +
+                                                    "from researcher " +
+                                                    "where researcher_id=?id", conn);
+
+                cmd.Parameters.AddWithValue("id", r.ID);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    changed.Degree = rdr.GetString(0);
+                    
+                }
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return changed;
+        }
 
         /// <summary>
         /// Filter for publications
@@ -273,50 +381,5 @@ namespace A2SDD
             }
             return count;
         }
-
-        //Optional part of step 2.3.4 in Week 8 tutorial illustrating that some answers can be obtained by directly querying the database.
-        //This is useful if the necessary data has not been loaded into memory yet.
-        /* public static int EmployeeTrainingCount(Researcher e, int startYear, int endYear)
-         {
-             MySqlConnection conn = GetConnection();
-             int count = 0;
-
-             try
-             {
-                 conn.Open();
-
-                 MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
-                                                     "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
-                 cmd.Parameters.AddWithValue("id", e.ID);
-                 cmd.Parameters.AddWithValue("start", startYear);
-                 cmd.Parameters.AddWithValue("end", endYear);
-                 count = Int32.Parse(cmd.ExecuteScalar().ToString());
-             }
-             catch (MySqlException ex)
-             {
-                 Console.WriteLine("Error connecting to database: " + ex);
-             }
-             finally
-             {
-                 if (conn != null)
-                 {
-                     conn.Close();
-                 }
-             }
-
-             return count;
-         }
-
-         //This method is now obsolete.
-         public static List<Employee> Generate()
-         {
-             return new List<Employee>() {
-                 new Employee { Name = "Jane", ID = 1, Gender = Gender.F },
-                 new Employee { Name = "John", ID = 3, Gender = Gender.M },
-                 new Employee { Name = "Mary", ID = 7, Gender = Gender.F },
-                 new Employee { Name = "Lindsay", ID = 5, Gender = Gender.X },
-                 new Employee { Name = "Meilin", ID = 2, Gender = Gender.F }
-             };
-         } */
     }
 }
