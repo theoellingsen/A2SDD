@@ -36,7 +36,7 @@ namespace A2SDDWPF
 		public MainWindow()
 		{
 		InitializeComponent();
-			errorMessage();
+		check_errorMessage();
 
 		researcher = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
@@ -50,7 +50,7 @@ namespace A2SDDWPF
 			}
 		}
 
-		public void errorMessage()
+		public void check_errorMessage()
 		{
 			if (ResearcherController.LoadResearchers().Count == 0)
 			{
@@ -60,7 +60,20 @@ namespace A2SDDWPF
 			
 		}
 
-	private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+		private void ResearcherListView_MouseDoubleClick(object sender, MouseEventArgs e)
+		{
+			ResearcherDetailsView r = new ResearcherDetailsView();
+			if (ResearcherListView.SelectedItem != null)
+			{
+				if (ResearcherListView.SelectedItem.GetType() == typeof(Researcher))
+				{
+					Researcher x = (Researcher) ResearcherListView.SelectedItem;
+					researcher.r = x;
+				}
+			}
+			r.Show();
+		}
+		private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
 		{
 
 		}

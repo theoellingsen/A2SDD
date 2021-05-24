@@ -31,23 +31,23 @@
             </StackPanel>
         </DataTemplate>
 
-        
-       <local:Researcher x:Key="Researcher"/>
-        
+        <local:Researcher x:Key="Researcher"/>
+
     </Window.Resources>
-    
+
     <Window.DataContext>
         <local:Researcher />
     </Window.DataContext>
-    
-    
+
+
     <Grid Margin="0,0,625,0">
-        
+
         <ListBox x:Name="ResearcherListView" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
+                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" Control.MouseDoubleClick="ResearcherListView_MouseDoubleClick" Margin="0,15,0,0"/>
             <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" />
         </ListBox>
+
 
         <DockPanel LastChildFill="False">
             <Menu DockPanel.Dock="Top">
@@ -68,7 +68,7 @@
             </Menu>
         </DockPanel>
     </Grid>
-    
+
 
 </Window>
     
