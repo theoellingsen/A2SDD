@@ -18,5 +18,29 @@ namespace A2SDDWPF
             return rList;
         }
 
+        public static ObservableCollection<Staff> LoadStaff()
+        {
+            var baseList = Database.LoadReseacherListView();
+            var staffList = from some in baseList
+                            where some.EmployeeType == EmployeeType.Staff
+                            select some;
+            ObservableCollection<Staff> returnList = new ObservableCollection<Staff>();
+            foreach(var staffMember in staffList)
+            {
+                returnList.Add(Database.LoadStaff(staffMember));
+                returnList.Last().Positions = Database.LoadPosition(staffMember);
+            }
+
+            return returnList;
+        }
+
+        public static ObservableCollection<Researcher> FilterBy(EmploymentLevel e)
+        {
+            var baseList = LoadStaff();
+            var selected = from some in baseList
+                           where some.CurrentJob().Level == e
+                           select some;
+            return new ObservableCollection<Researcher>(selected);
+        }
     }
 }
