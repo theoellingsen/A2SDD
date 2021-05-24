@@ -70,8 +70,9 @@
                     <MenuItem Header="Meeting Minimum" Click="FilterClickMeeting"/>
                     <MenuItem Header="Star Performers" Click="FilterClickStar"/>
                 </MenuItem>
-                <TextBox x:Name="SearchBox" IsReadOnly ="False" Visibility="Visible" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="SearchBox_TextChanged" Height="18" Width="80"/>
-                <Button x:Name="Search" Click="Button_Click" Content="Search" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center"/>
+                <TextBox x:Name="SearchBox" IsReadOnly ="False" Visibility="Visible" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="SearchBox_TextChanged" Width="150" HorizontalAlignment="Stretch"/>
+                <Button x:Name="Search" Click="Button_Click" Content="Search" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50"/>
+                <Button x:Name="Reset" Click="ButtonReset_Click" Content="Reset" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50" Height="20"/>
             </Menu>
         </DockPanel>
     </Grid>
