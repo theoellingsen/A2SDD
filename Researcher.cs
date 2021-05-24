@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Collections.ObjectModel;
 using A2SDDWPF;
 
@@ -9,12 +10,12 @@ namespace A2SDD
 
     public enum Campus { Hobart, Launceston, CradleCoast }
 
-    public enum Type { Staff, Student }
+    public enum EmployeeType { Staff, Student }
     class Researcher : ResearcherController
     {
         public int ID { get; set; }
 
-        public Type Type { get; set; }
+        public EmployeeType EmployeeType { get; set; }
 
         public String GivenName { get; set; }
 
@@ -55,43 +56,40 @@ namespace A2SDD
             return oc;
 		}*/
 
-        public Position CurrentJob(Researcher r)
+        public Position CurrentJob()
         {
-            return r.Positions[0];
+            return Positions.Last();
         }
 
-        public String CurrentJobTitle(Researcher r)
+        public String CurrentJobTitle()
         {
-            return r.Positions[0].Title();
+            return Positions.Last().Title();
         }
 
-        public DateTime CurrentJobStart(Researcher r)
+        public DateTime CurrentJobStart()
         {
-            return r.Positions[0].Start;
+            return Positions.Last().Start;
         }
 
-        public Position GetEarliestJob(Researcher r)
+        public Position GetEarliestJob()
         {
-            int length;
-            length = Positions.Count;
-
-            return r.Positions[length];
+            return Positions.Last();
         }
 
-        public DateTime EarliestStart(Researcher r)
+        public DateTime EarliestStart()
         {
-            Position p = GetEarliestJob(r);
+            Position p = GetEarliestJob();
             return p.Start;
         }
 
-        public float Tenure(Researcher r)
+        public float Tenure()
         {
-            DateTime tenure = EarliestStart(r);
+            DateTime tenure = EarliestStart();
             return tenure.CompareTo(DateTime.Now);
         }
-        public int PublicationsCount(Researcher r)
+        public int PublicationsCount()
         {
-            return r.Publications.Count;
+            return Publications.Count;
         }
     }
 }
