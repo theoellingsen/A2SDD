@@ -35,10 +35,11 @@ namespace A2SDDWPF
 		private const string RESEARCHER_LIST_KEY = "ResearcherListView";
 		public MainWindow()
 		{
-		InitializeComponent();
+			InitializeComponent();
 			errorMessage();
+		
 
-		researcher = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
+			researcher = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
 
 		private void ResearcherListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -97,20 +98,12 @@ namespace A2SDDWPF
 		{
 			Meeting m = new Meeting();
 			m.Show();
-			/*List<Researcher> rl = Database.LoadReseacherListView();
-			rl = Report.OrderByPerformance(rl, "MeetingMinimum");
-			String report = ListToString(rl);
-			MessageBox.Show("Researchers with Performance Meeting Minimum Requirements:\n" + report);*/
 		}
 
 		private void FilterClickStar(object sender, RoutedEventArgs e)
 		{
 			Star s = new Star();
 			s.Show();
-			/*List<Researcher> rl = Database.LoadReseacherListView();
-			rl = Report.OrderByPerformance(rl, "StarPerformer");
-			String report = ListToString(rl);
-			MessageBox.Show("Researchers that are Star Performers:\n" + report);*/
 		}
 		
 		private void FilterClickA(object sender, RoutedEventArgs e)
@@ -211,6 +204,12 @@ namespace A2SDDWPF
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
+		}
+
+		private void ListViewMouseClick(object sender, MouseButtonEventArgs e)
+		{
+			ListBox listBox = (ListBox)sender;
+			Researcher selected = (Researcher) listBox.SelectedItems[0];
 		}
 	}
 

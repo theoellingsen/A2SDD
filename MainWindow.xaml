@@ -22,11 +22,11 @@
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:Researcher}">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=FamilyName}"/>
+                <TextBlock Name ="FamilyName" Text="{Binding Path=FamilyName}"/>
                 <TextBlock Text=", "/>
-                <TextBlock Text="{Binding Path=GivenName}"/>
+                <TextBlock Name ="GivenName" Text="{Binding Path=GivenName}"/>
                 <TextBlock Text=" ("/>
-                <TextBlock Text="{Binding Path=Title}"/>
+                <TextBlock Name ="Title" Text="{Binding Path=Title}"/>
                 <TextBlock Text=")"/>
             </StackPanel>
         </DataTemplate>
@@ -49,7 +49,7 @@
         </Grid.RowDefinitions>
         <ListBox x:Name="ResearcherListView" Grid.Row ="1" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  MinHeight ="100" HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderBrush="#FFCFCFCF">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF" VerticalContentAlignment="Top" VerticalAlignment="Top"/>
+                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF" VerticalContentAlignment="Top" VerticalAlignment="Top"/>
         </ListBox>
 
         <DockPanel LastChildFill="False" Grid.Row="0">
