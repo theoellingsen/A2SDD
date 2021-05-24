@@ -177,6 +177,27 @@ namespace A2SDDWPF
 				ResearcherListView.Items.Add(match);
 			}
 		}
+
+		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			string content = SearchBox.Text;
+			var filteredList = ResearcherController.FilterSearch(content);
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
+
+		}
 	}
 
 }

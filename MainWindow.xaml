@@ -31,27 +31,28 @@
             </StackPanel>
         </DataTemplate>
 
-        
-       <local:Researcher x:Key="Researcher"/>
-        
+
+        <local:Researcher x:Key="Researcher"/>
+
     </Window.Resources>
-    
+
     <Window.DataContext>
         <local:Researcher />
     </Window.DataContext>
-    
-    
+
+
     <Grid Margin="0,0,625,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="ResearcherListView" Grid.Row ="1" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  MinHeight ="100" HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <ListBox x:Name="ResearcherListView" Grid.Row ="1" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  MinHeight ="100" HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderBrush="#FFCFCFCF">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
+                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF" VerticalContentAlignment="Top" VerticalAlignment="Top"/>
+            <TextBox x:Name="SearchBox" Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap"/>
+            <Button x:Name="Search" Click="Button_Click" Content="Search" Height="20" Width="159" VerticalContentAlignment="Center"/>
         </ListBox>
-        <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="2"/>
 
         <DockPanel LastChildFill="False" Grid.Row="0">
             <Menu DockPanel.Dock="Top">
@@ -74,7 +75,7 @@
             </Menu>
         </DockPanel>
     </Grid>
-    
+
 
 </Window>
     

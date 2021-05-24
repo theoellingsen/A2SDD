@@ -52,5 +52,28 @@ namespace A2SDDWPF
                            select some;
             return new ObservableCollection<Researcher>(selected);
 		}
+
+        public static ObservableCollection<Researcher> FilterSearch(String search)
+        {
+            var baseList = LoadResearchers();
+
+            var selected1 = from some in baseList
+                           where string.Equals(search, some.FamilyName)
+                            select some;
+
+            var selected2 = from some in baseList
+                       where string.Equals(search, some.GivenName)
+                       select some;
+
+            var selected3 = from some in baseList
+                       where string.Equals(search, some.Title)
+                       select some;
+
+            var merge = selected1.Concat(selected2)
+                                 .Concat(selected3)
+                                 .ToList();
+
+            return new ObservableCollection<Researcher>(merge);
+        }
     }
 }
