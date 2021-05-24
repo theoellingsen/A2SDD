@@ -56,11 +56,13 @@
         <DockPanel LastChildFill="False" Grid.Row="0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Filter">
-                    <MenuItem Header="A" Click="FilterClickA"/>
-                    <MenuItem Header="B" Click="FilterClickB"/>
-                    <MenuItem Header="C" Click="FilterClickC"/>
-                    <MenuItem Header="D" Click="FilterClickD"/>
-                    <MenuItem Header="E" Click="FilterClickE"/>
+                    <MenuItem Header="Level A" Click="FilterClickA"/>
+                    <MenuItem Header="Level B" Click="FilterClickB"/>
+                    <MenuItem Header="Level C" Click="FilterClickC"/>
+                    <MenuItem Header="Level D" Click="FilterClickD"/>
+                    <MenuItem Header="Level E" Click="FilterClickE"/>
+                    <MenuItem Header="Student" Click="FilterClickStudent"/>
+                    <MenuItem Header="All" Click="FilterClickAll"/>
                 </MenuItem>
 
                 <MenuItem Header="Generate Report">

@@ -42,5 +42,15 @@ namespace A2SDDWPF
                            select some;
             return new ObservableCollection<Researcher>(selected);
         }
+
+        public static ObservableCollection<Researcher> Students()
+		{
+            var baseList = LoadResearchers();
+
+            var selected = from some in baseList
+                           where some.Positions.Count == 0
+                           select some;
+            return new ObservableCollection<Researcher>(selected);
+		}
     }
 }

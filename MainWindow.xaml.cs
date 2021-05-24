@@ -158,6 +158,25 @@ namespace A2SDDWPF
 				ResearcherListView.Items.Add(match);
 			}
 		}
+		private void FilterClickStudent(object sender, RoutedEventArgs e)
+		{
+			var filteredList = ResearcherController.Students();
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
+		}
+
+		private void FilterClickAll (object sender, RoutedEventArgs e)
+		{
+			var filteredList = ResearcherController.LoadResearchers();
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
+		}
 	}
 
 }

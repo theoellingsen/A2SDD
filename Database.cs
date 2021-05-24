@@ -58,7 +58,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT level, start, end FROM position where position.id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT level, start FROM position where position.id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 
@@ -68,11 +68,10 @@ namespace A2SDD
                 r.Positions = new List<Position>();
                 while (rdr.Read())
                 {
-
                     r.Positions.Add(new Position
                     {
                         Level = ParseEnum<EmploymentLevel>(rdr.GetString(0)),
-                        Start = rdr.GetDateTime(1),
+                        Start = rdr.GetDateTime(1)
                     });
                 }
             }
@@ -91,7 +90,7 @@ namespace A2SDD
                     conn.Close();
                 }
             }
-            try
+            /*try
             {
                 conn.Open();
 
@@ -124,7 +123,7 @@ namespace A2SDD
                 {
                     conn.Close();
                 }
-            }
+            }*/
             return r.Positions;
         }
 
