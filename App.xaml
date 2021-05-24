@@ -14,8 +14,8 @@
 
     <Application.Resources>
         <locala:ResearcherController x:Key="controller"></locala:ResearcherController>
-        <ObjectDataProvider x:Key="researcherListView"
-                            ObjectInstance="{StaticResource Reseacher}"
+        <ObjectDataProvider x:Key="ResearcherListView"
+                            ObjectInstance="{StaticResource Researcher}"
                             MethodName="GetViewableList">
         </ObjectDataProvider>
 
