@@ -139,7 +139,7 @@ namespace A2SDD
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT id, given_name, family_name, title FROM researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT type, id, given_name, family_name, title FROM researcher", conn);
 
                 rdr = cmd.ExecuteReader();
 
@@ -149,11 +149,13 @@ namespace A2SDD
                 {
                     researchers.Add(new Researcher
                     {
-                        ID = rdr.GetInt32(0),
-                        GivenName = rdr.GetString(1),
-                        FamilyName = rdr.GetString(2),
-                        Title = rdr.GetString(3),
-                    });
+                        EmployeeType = ParseEnum<EmployeeType>(rdr.GetString(0)),
+                        ID = rdr.GetInt32(1),
+                        GivenName = rdr.GetString(2),
+                        FamilyName = rdr.GetString(3),
+                        Title = rdr.GetString(4),
+ 
+                });
                 }
                 conn.Close();
             }
@@ -199,7 +201,7 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
-                    r.Type = ParseEnum<Type>(rdr.GetString(0));
+                    r.EmployeeType = ParseEnum<EmployeeType>(rdr.GetString(0));
                     r.Unit = rdr.GetString(1);
                     r.Campus = ParseEnum<Campus>(rdr.GetString(2));
                     r.Email = rdr.GetString(3);
@@ -239,11 +241,11 @@ namespace A2SDD
             changed.GivenName = r.GivenName;
             changed.FamilyName = r.FamilyName;
             changed.Title = r.Title;
-            changed.Type = r.Type;
+            changed.EmployeeType = r.EmployeeType;
             changed.Unit = r.Unit;
             changed.Campus = r.Campus;
             changed.Email = r.Email;
-            changed.Photo = r.Photo; ;
+            changed.Photo = r.Photo; 
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
 
@@ -293,7 +295,7 @@ namespace A2SDD
             changed.GivenName = r.GivenName;
             changed.FamilyName = r.FamilyName;
             changed.Title = r.Title;
-            changed.Type = r.Type;
+            changed.EmployeeType = r.EmployeeType;
             changed.Unit = r.Unit;
             changed.Campus = r.Campus;
             changed.Email = r.Email;

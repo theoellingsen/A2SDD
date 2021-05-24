@@ -42,14 +42,18 @@
     
     
     <Grid Margin="0,0,625,0">
-        
-        <ListBox x:Name="ResearcherListView" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="ResearcherListView" Grid.Row ="1" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  MinHeight ="100" HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
                  ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" Margin="0,15,0,0"/>
-            <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" />
         </ListBox>
+        <TextBox Text="Enter Search Here" IsReadOnly ="False" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0" Grid.Row="2"/>
 
-        <DockPanel LastChildFill="False">
+        <DockPanel LastChildFill="False" Grid.Row="0">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Filter">
                     <MenuItem Header="A" Click="FilterClickA"/>

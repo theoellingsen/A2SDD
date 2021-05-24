@@ -104,42 +104,48 @@ namespace A2SDDWPF
 		
 		private void FilterClickA(object sender, RoutedEventArgs e)
 		{
-		
-			ObjectDataProvider listProvider = (ObjectDataProvider)FindResource("ResearcherListView");
-			var x = listProvider.Data;
-			ObservableCollection<Researcher> r = new ObservableCollection<Researcher>();
-
-			r = (ObservableCollection<Researcher>)x;
-
-			ObservableCollection<Researcher> filtered = new ObservableCollection<Researcher>();
-			
-			foreach (Researcher researcher in r)
+			var filteredList = ResearcherController.FilterBy(EmploymentLevel.A);
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
 			{
-				if (researcher.Positions.Count == 0 || researcher.Positions[0].Level != EmploymentLevel.A)
-				{
-					filtered.Add(researcher);
-				}
-			}
-			foreach (Researcher item in filtered)
-			{
-				((ObservableCollection<Researcher>)ResearcherListView.ItemsSource).Remove(item);
+				ResearcherListView.Items.Add(match);
 			}
 		}
 		private void FilterClickB(object sender, RoutedEventArgs e)
 		{
-
+			var filteredList = ResearcherController.FilterBy(EmploymentLevel.B);
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
 		}
 		private void FilterClickC(object sender, RoutedEventArgs e)
 		{
-
+			var filteredList = ResearcherController.FilterBy(EmploymentLevel.C);
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
 		}
 		private void FilterClickD(object sender, RoutedEventArgs e)
 		{
-
+			var filteredList = ResearcherController.FilterBy(EmploymentLevel.D);
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
 		}
 		private void FilterClickE(object sender, RoutedEventArgs e)
 		{
-
+			var filteredList = ResearcherController.FilterBy(EmploymentLevel.E);
+			ResearcherListView.Items.Clear();
+			foreach (var match in filteredList)
+			{
+				ResearcherListView.Items.Add(match);
+			}
 		}
 	}
 
