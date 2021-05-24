@@ -206,6 +206,7 @@ namespace A2SDDWPF
 			{
 				ResearcherListView.Items.Add(match);
 			}
+			SearchBox.Text = "";
 		}
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
