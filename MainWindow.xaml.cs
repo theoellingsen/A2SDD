@@ -199,7 +199,6 @@ namespace A2SDDWPF
 		}
 		private void ButtonReset_Click(object sender, RoutedEventArgs e)
 		{
-			string content = SearchBox.Text;
 			var filteredList = ResearcherController.LoadResearchers();
 			ResearcherListView.Items.Clear();
 			foreach (var match in filteredList)

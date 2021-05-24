@@ -28,7 +28,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button x:Name="CopyEmails" Content="Copy Email Addresses" Margin="3,3,9,3" Grid.Row="0" Height="20" Width="125" HorizontalAlignment="Right"/>
+        <Button x:Name="CopyEmails" Click="Button_Click" Content="Copy Email Addresses" Margin="3,3,9,3" Grid.Row="0" Height="20" Width="125" HorizontalAlignment="Right"/>
         <ListBox x:Name="StarListView" Margin="3,3,3,3" Opacity="0.95" Background="#FFCCCCCC" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.Row ="1" SelectionChanged="StarListView_SelectionChanged">
             <ListBox SelectionChanged="ListBox_SelectionChanged"
                ItemsSource="{Binding Source={StaticResource StarListView}}" Margin="0,15,0,0">

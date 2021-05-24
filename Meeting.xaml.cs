@@ -49,5 +49,26 @@ namespace A2SDDWPF
 		{
 
 		}
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			var filtered = Report.OrderByPerformance("MeetingMinimum");
+			String emails = "";
+
+			for (int i = 0; i < filtered.Count; i++)
+			{
+				if (i == filtered.Count - 1)
+				{
+					emails += filtered[i].Email;
+				}
+				else
+				{
+					emails += filtered[i].Email + ", ";
+				}
+			}
+
+			System.Windows.Clipboard.SetData(DataFormats.Text, emails);
+
+			MessageBox.Show("Emails Copied!");
+		}
 	}
 }

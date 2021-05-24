@@ -138,7 +138,7 @@ namespace A2SDD
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT type, id, given_name, family_name, title FROM researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT type, id, given_name, family_name, title, email FROM researcher", conn);
 
                 rdr = cmd.ExecuteReader();
 
@@ -153,8 +153,9 @@ namespace A2SDD
                         GivenName = rdr.GetString(2),
                         FamilyName = rdr.GetString(3),
                         Title = rdr.GetString(4),
- 
-                });
+                        Email = rdr.GetString(5)
+
+                    }) ;
                 }
                 conn.Close();
             }
