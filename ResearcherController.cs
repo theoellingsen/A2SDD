@@ -53,9 +53,10 @@ namespace A2SDDWPF
             return new ObservableCollection<Researcher>(selected);
 		}
 
-        public static ObservableCollection<Researcher> FilterSearch(String search)
+        public static ObservableCollection<Researcher> FilterSearch(String entered)
         {
             var baseList = LoadResearchers();
+            String search = entered.ToLower();
 
             var selected1 = from some in baseList
                            where string.Equals(search, some.FamilyName)
