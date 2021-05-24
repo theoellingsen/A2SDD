@@ -196,6 +196,12 @@ namespace A2SDDWPF
 			{
 				ResearcherListView.Items.Add(match);
 			}
+			SearchBox.Visibility = System.Windows.Visibility.Visible;
+			Search.Visibility = System.Windows.Visibility.Visible;
+		}
+
+		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
 
 		}
 	}
