@@ -53,21 +53,20 @@ namespace A2SDDWPF
             return new ObservableCollection<Researcher>(selected);
 		}
 
-        public static ObservableCollection<Researcher> FilterSearch(String entered)
+        public static ObservableCollection<Researcher> FilterSearch(String search)
         {
             var baseList = LoadResearchers();
-            String search = entered.ToLower();
 
             var selected1 = from some in baseList
-                           where string.Equals(search, some.FamilyName)
+                           where string.Equals(search, some.FamilyName.ToLower())
                             select some;
 
             var selected2 = from some in baseList
-                       where string.Equals(search, some.GivenName)
+                       where string.Equals(search, some.GivenName.ToLower())
                        select some;
 
             var selected3 = from some in baseList
-                       where string.Equals(search, some.Title)
+                       where string.Equals(search, some.Title.ToLower())
                        select some;
 
             var merge = selected1.Concat(selected2)
