@@ -36,6 +36,7 @@ namespace A2SDDWPF
 		public MainWindow()
 		{
 		InitializeComponent();
+			errorMessage();
 
 		researcher = (ResearcherController)(Application.Current.FindResource(RESEARCHER_LIST_KEY) as ObjectDataProvider).ObjectInstance;
 		}
@@ -47,6 +48,16 @@ namespace A2SDDWPF
 				ResearcherListView.DataContext = e.AddedItems[0];
 
 			}
+		}
+
+		public void errorMessage()
+		{
+			if (ResearcherController.LoadResearchers().Count == 0)
+			{
+				MessageBox.Show("ERROR: Database could not connect.\nPlease check your connection.\nPress ok to quit the program.");
+				Environment.Exit(1);
+			}
+			
 		}
 
 	private void ListBoxItem_Selected(object sender, RoutedEventArgs e)

@@ -14,7 +14,7 @@ namespace A2SDDWPF
         public static ObservableCollection<Researcher> LoadResearchers()
         {
             var newList = Database.LoadReseacherListView();
-            ObservableCollection<Researcher> rList = new ObservableCollection<Researcher>(newList);
+            ObservableCollection<Researcher> rList = new ObservableCollection<Researcher>(newList); 
             return rList;
         }
 
