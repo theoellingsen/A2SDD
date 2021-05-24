@@ -199,7 +199,7 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
-                    r.Type = ParseEnum<Type>(rdr.GetString(0));
+                    //r.Type = ParseEnum<Type>(rdr.GetString(0));
                     r.Unit = rdr.GetString(1);
                     r.Campus = ParseEnum<Campus>(rdr.GetString(2));
                     r.Email = rdr.GetString(3);
@@ -239,7 +239,7 @@ namespace A2SDD
             changed.GivenName = r.GivenName;
             changed.FamilyName = r.FamilyName;
             changed.Title = r.Title;
-            changed.Type = r.Type;
+            //changed.Type = r.Type;
             changed.Unit = r.Unit;
             changed.Campus = r.Campus;
             changed.Email = r.Email;
@@ -293,7 +293,7 @@ namespace A2SDD
             changed.GivenName = r.GivenName;
             changed.FamilyName = r.FamilyName;
             changed.Title = r.Title;
-            changed.Type = r.Type;
+            //changed.Type = r.Type;
             changed.Unit = r.Unit;
             changed.Campus = r.Campus;
             changed.Email = r.Email;
