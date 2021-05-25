@@ -116,7 +116,8 @@ namespace A2SDD
                     r.Positions.Add(new Position
                     {
                         Level = ParseEnum<EmploymentLevel>(rdr.GetString(0)),
-                        Start = rdr.GetDateTime(1)
+                        Start = rdr.GetDateTime(1),
+                        End = rdr.GetDateTime(2)
                     });
                 }
             }
