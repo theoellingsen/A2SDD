@@ -96,14 +96,16 @@ namespace A2SDD
 
         public DateTime EarliestStart()
         {
-            Position p = GetEarliestJob();
-            return p.Start;
+            return Start;
         }
 
-        public float Tenure()
+        public Double Tenure()
         {
-            DateTime tenure = EarliestStart();
-            return tenure.CompareTo(DateTime.Now);
+            DateTime now = DateTime.Now;
+            Double tenure = (DateTime.Today - Start).TotalDays;
+            tenure = tenure / 365.2425;
+            tenure = Math.Round(tenure, 1);
+            return tenure;
         }
         public int PublicationsCount()
         {

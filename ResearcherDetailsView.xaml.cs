@@ -38,6 +38,7 @@ namespace A2SDDWPF
                 label_commenced.Content = researcher.Start;
                 label_current.Content = researcher.CurrentJobStart();
                 PositionView.ItemsSource = researcher.GetPositions();
+                label_tenure.Content = researcher.Tenure() + " Years";
 
 
 
@@ -67,6 +68,7 @@ namespace A2SDDWPF
                 label_current.Content = researcher.CurrentJobStart();
                 PrevPos.Visibility = System.Windows.Visibility.Hidden;
                 PositionView.Visibility = System.Windows.Visibility.Hidden;
+                label_tenure.Content = researcher.Tenure() + " Years";
 
 
                 String photo = researcher.Photo;

@@ -11,52 +11,64 @@
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:Position}">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding Path=Start}"/>
+                <TextBlock Text="{Binding Path=StartString}"/>
                 <TextBlock Text=" - "/>
                 <TextBlock Text="{Binding Path=End}"/>
                 <TextBlock Text=": "/>
-                <TextBlock Text="{Binding Path=Level}"/>
+                <TextBlock Text="{Binding Path=titleName}"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
 
 
     <Grid HorizontalAlignment="Left" Width="778" Margin="1,1,0,1">
-        <StackPanel Orientation="Vertical" MinWidth="120" Margin="0,0,503,382">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="337*"/>
+            <ColumnDefinition Width="52*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="143*"/>
+            <RowDefinition Height="289*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" MinWidth="120" Margin="0,0,399,93">
             <Label x:Name="label_title" FontSize="20" FontWeight="Bold" Width="275" Height="53"/>
         </StackPanel>
-        <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="0,53,503,334">
+        <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="0,53,399,45">
             <Label x:Name="PositionorStudent" FontWeight="Bold" Width="107" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
             <Label x:Name="label_positionCurrent" FontWeight="Normal" Width="172" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
         </StackPanel>
-        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,98,0,291" RenderTransformOrigin="0.475,0.53">
+        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,98,0,2" RenderTransformOrigin="0.475,0.53">
             <Label Content="Campus:" FontWeight="Bold" Width="59" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
             <Label x:Name="label_campus" FontWeight="Normal" Width="172" Height="42" RenderTransformOrigin="-0.965,0.616"/>
         </StackPanel>
-        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,141,0,248" RenderTransformOrigin="0.475,0.53">
+        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,141,0,248" RenderTransformOrigin="0.475,0.53" Grid.RowSpan="2">
             <Label Content="School:" FontWeight="Bold" Width="59" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
             <Label x:Name="label_school" FontWeight="Normal" Width="215" Height="42" RenderTransformOrigin="-0.965,0.616"/>
         </StackPanel>
-        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,184,0,205" RenderTransformOrigin="0.475,0.53">
+        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,41,0,205" RenderTransformOrigin="0.475,0.53" Grid.Row="1">
             <Label Content="Email:" FontWeight="Bold" Width="56" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
             <Label x:Name="label_email" FontWeight="Normal" Width="219" Height="42" RenderTransformOrigin="-0.965,0.616"/>
         </StackPanel>
-        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,227,0,162" RenderTransformOrigin="0.475,0.53">
+        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,84,0,162" RenderTransformOrigin="0.475,0.53" Grid.Row="1">
             <Label Content="Commenced with institution:" FontWeight="Bold" Width="182" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
             <Label x:Name="label_commenced" FontWeight="Normal" Width="92" Height="42" RenderTransformOrigin="-0.965,0.616"/>
         </StackPanel>
-        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,270,0,119" RenderTransformOrigin="0.475,0.53">
+        <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,127,0,119" RenderTransformOrigin="0.475,0.53" Grid.Row="1">
             <Label Content="Commenced current position:" FontWeight="Bold" Width="182" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
             <Label x:Name="label_current" FontWeight="Normal" Width="93" Height="42" RenderTransformOrigin="-0.965,0.616"/>
         </StackPanel>
-        <StackPanel Orientation ="Vertical" Width="330" HorizontalAlignment="Left" Margin="0,313,0,0" RenderTransformOrigin="0.475,0.53">
+        <StackPanel Orientation ="Vertical" Width="330" HorizontalAlignment="Left" Margin="0,170,0,0" RenderTransformOrigin="0.475,0.53" Grid.Row="1">
             <Label x:Name="PrevPos" Content="Previous positions:" FontWeight="Bold" Width="274" Height="26" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" HorizontalAlignment="Left"/>
-            <ListBox Height="92" Width="330"
+            <ListBox Height="100" Width="330"
                   x:Name="PositionView" SelectionChanged="ListBox_SelectionChanged"
                  ItemsSource="{Binding Source={StaticResource ResearcherPositions}}" HorizontalAlignment="Left">
             </ListBox>
         </StackPanel>
-        <WrapPanel x:Name ="pic" Margin="568,0,0,171"/>
+        <WrapPanel x:Name ="pic" VerticalAlignment="Top" Height="300" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="200"/>
+        <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="578,157,0,87" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left" Width="200">
+            <Label Content="Tenure:" FontWeight="Bold" Width="51" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+            <Label x:Name="label_tenure" FontWeight="Normal" Width="147" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
+        </StackPanel>
 
     </Grid>
 </Window>

@@ -11,13 +11,24 @@ namespace A2SDD
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
 
+        public String StartString { get { return DateFormat(Start); } set { } }
+        public String titleName { get { return ToTitle(Level); } set { } }
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns
+        /// 
         public String Title()
         {
             return ToTitle(Level);
+        }
+
+        public String DateFormat(DateTime format)
+		{
+            String dateOnlyString = format.ToShortDateString();
+            return dateOnlyString;
+
         }
 
         /// <summary>
