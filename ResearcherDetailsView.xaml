@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:A2SDD"
         mc:Ignorable="d"
-        Title="ResearcherDetailsView" Height="450" Width="800">
+        Title="ResearcherDetailsView" Height="450" Width="800" MinWidth="750" MinHeight="450">
 
 
     <Window.Resources>
