@@ -61,15 +61,15 @@ namespace A2SDDWPF
             var baseList = LoadResearchers();
 
             var selected1 = from some in baseList
-                           where string.Equals(search, some.FamilyName.ToLower())
+                           where string.Equals(search.ToLower(), some.FamilyName.ToLower())
                             select some;
 
             var selected2 = from some in baseList
-                       where string.Equals(search, some.GivenName.ToLower())
+                       where string.Equals(search.ToLower(), some.GivenName.ToLower())
                        select some;
 
             var selected3 = from some in baseList
-                       where string.Equals(search, some.Title.ToLower())
+                       where string.Equals(search.ToLower(), some.Title.ToLower())
                        select some;
 
             var merge = selected1.Concat(selected2)

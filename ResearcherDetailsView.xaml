@@ -8,13 +8,21 @@
         Title="ResearcherDetailsView" Height="450" Width="800">
     <Border BorderBrush="Gray" BorderThickness="1" Margin="10,0">
         <Grid Margin="0">
-            <WrapPanel Name ="a" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Margin="0,0,0,32" Grid.RowSpan="2">
-                <StackPanel Orientation="Vertical" MinWidth="120" Height="50">
-                    <Label x:Name="label_title" FontSize="20" FontWeight="Bold" Width="275" Height="50"/>
-                </StackPanel>
-                <WrapPanel/>
-
-            </WrapPanel>
+            <StackPanel Orientation="Vertical" MinWidth="120" Margin="0,0,503,382">
+                <Label x:Name="label_title" FontSize="20" FontWeight="Bold" Width="275" Height="53"/>
+            </StackPanel>
+            <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="0,53,503,334">
+                <Label x:Name="PositionorStudent" FontWeight="Bold" Width="107" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+                <Label x:Name="label_positionCurrent" FontWeight="Normal" Width="172" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
+            </StackPanel>
+            <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,98,0,291" RenderTransformOrigin="0.475,0.53">
+                <Label Content="Campus:" FontWeight="Bold" Width="59" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_campus" FontWeight="Normal" Width="172" Height="42" RenderTransformOrigin="-0.965,0.616"/>
+            </StackPanel>
+            <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,141,0,248" RenderTransformOrigin="0.475,0.53">
+                <Label Content="School:" FontWeight="Bold" Width="59" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
+                <Label x:Name="label_school" FontWeight="Normal" Width="172" Height="42" RenderTransformOrigin="-0.965,0.616"/>
+            </StackPanel>
 
         </Grid>
     </Border>

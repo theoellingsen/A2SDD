@@ -29,6 +29,18 @@ namespace A2SDDWPF
 
             //Title
             label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
+            label_campus.Content = researcher.Campus;
+            label_positionCurrent.Content = researcher.CurrentJobTitle();
+            label_school.Content = researcher.Unit;
+            
+            if (researcher.Positions.Count == 0)
+			{
+                PositionorStudent.Content = "Current Degree:";
+            } else
+			{
+                PositionorStudent.Content = "Current Position:";
+			}
+            
 
             //Display Photo (WHEN PHOTO IS COLLECTED CORRECTLY FROM DATABASE, THIS SHOULD WORK)
             /*

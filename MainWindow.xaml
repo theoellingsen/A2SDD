@@ -9,12 +9,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="CanResize" MinHeight="450" MinWidth="800"
+        Title="MainWindow" ResizeMode="CanResize" MinHeight="450" MinWidth="800"
         xmlns:c="clr-namespace:A2SDD"
         xmlns:local="clr-namespace:A2SDD"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     
-        xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher">
+        xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher" Height="447" Width="750">
 
 
 
@@ -47,10 +47,8 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="ResearcherListView" Grid.Row ="1" Margin="0,1,0,1" Opacity="0.95" Background="#FFCCCCCC"  MinHeight ="100" HorizontalAlignment="Stretch" VerticalAlignment ="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" BorderBrush="#FFCFCFCF">
-            <ListBox SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source ={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF" VerticalContentAlignment="Top" VerticalAlignment="Top"/>
-        </ListBox>
+        <ListBox x:Name="ResearcherListView" SelectionChanged="ListBox_SelectionChanged"
+                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF" VerticalContentAlignment="Top" Margin="0,60,4,42" Grid.RowSpan="2"/>
 
         <DockPanel LastChildFill="False" Grid.Row="0">
             <Menu DockPanel.Dock="Top">

@@ -58,12 +58,20 @@ namespace A2SDD
 
         public Position CurrentJob()
         {
+            
             return Positions.Last();
         }
 
         public String CurrentJobTitle()
         {
-            return Positions.Last().Title();
+            if (Positions.Count == 0)
+			{
+                return "Implement Get Degree";
+			} else
+			{
+                return Positions.Last().Title();
+            }
+           
         }
 
         public DateTime CurrentJobStart()

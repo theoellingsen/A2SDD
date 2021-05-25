@@ -108,67 +108,32 @@ namespace A2SDDWPF
 		
 		private void FilterClickA(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.FilterBy(EmploymentLevel.A);
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.FilterBy(EmploymentLevel.A);
 		}
 		private void FilterClickB(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.FilterBy(EmploymentLevel.B);
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.FilterBy(EmploymentLevel.B);
 		}
 		private void FilterClickC(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.FilterBy(EmploymentLevel.C);
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.FilterBy(EmploymentLevel.C);
 		}
 		private void FilterClickD(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.FilterBy(EmploymentLevel.D);
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.FilterBy(EmploymentLevel.D);
 		}
 		private void FilterClickE(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.FilterBy(EmploymentLevel.E);
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.FilterBy(EmploymentLevel.E);
 		}
 		private void FilterClickStudent(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.Students();
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.Students();
 		}
 
 		private void FilterClickAll (object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.LoadResearchers();
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.LoadResearchers();
 		}
 
 		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -183,22 +148,14 @@ namespace A2SDDWPF
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			string content = SearchBox.Text;
-			var filteredList = ResearcherController.FilterSearch(content);
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			ResearcherListView.ItemsSource = ResearcherController.FilterSearch(content);
 		}
 		private void ButtonReset_Click(object sender, RoutedEventArgs e)
 		{
-			var filteredList = ResearcherController.LoadResearchers();
-			ResearcherListView.Items.Clear();
-			foreach (var match in filteredList)
-			{
-				ResearcherListView.Items.Add(match);
-			}
+			
+			ResearcherListView.ItemsSource = ResearcherController.LoadResearchers();
 			SearchBox.Text = "";
+			
 		}
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
