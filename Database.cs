@@ -352,9 +352,9 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select degree, supervisor_id" +
-                                                    "from researcher " +
-                                                    "where researcher_id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT degree, supervisor_id" +
+                                                    "FROM researcher " +
+                                                    "where id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
