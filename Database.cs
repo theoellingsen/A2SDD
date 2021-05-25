@@ -57,7 +57,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT doi, title, year, type, cite_as, authors, available FROM publication WHERE authors LIKE '%?name%'", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT publication.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND id = ?id", conn);
 
                 cmd.Parameters.AddWithValue("name", (String)r.GivenName + " " + r.FamilyName);
 
@@ -103,7 +103,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT level, start FROM position where position.id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT level, start, end FROM position WHERE position.id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 
@@ -236,9 +236,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT type, unit, campus, email, photo, utas_start, current_start " +
-                                                    "FROM researcher " +
-                                                    "where id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT type, unit, campus, email, photo, utas_start, current_start FROM researcher WHERE id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
@@ -300,9 +298,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select level" +
-                                                    "from researcher " +
-                                                    "where researcher_id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT level FROM researcher WHERE id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
@@ -408,11 +404,11 @@ namespace A2SDD
                 
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
-                                                    "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT count(*) FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND id = ?id and year >= ?start and year <= ?end", conn);
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.Parameters.AddWithValue("start", startYear);
                 cmd.Parameters.AddWithValue("end", endYear);
+
                 count = Int32.Parse(cmd.ExecuteScalar().ToString());
             }
             catch (MySqlException e)
