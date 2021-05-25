@@ -83,6 +83,16 @@ namespace A2SDDWPF
                                  .ToList();
 
             return new ObservableCollection<Researcher>(merge);
+
+        }
+
+        public static String ParseCampus(Campus c)
+        {
+            if(c == Campus.CradleCoast)
+            {
+                return "Cradle Coast";
+            }
+            return c.ToString();
         }
     }
 }
