@@ -237,8 +237,8 @@ namespace A2SDD
                 conn.Open();
 
                 MySqlCommand cmd = new MySqlCommand("SELECT type, unit, campus, email, photo, utas_start, current_start " +
-                                                    "FROM 'researcher' " +
-                                                    "where researcher_id=?id", conn);
+                                                    "FROM researcher " +
+                                                    "where id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
