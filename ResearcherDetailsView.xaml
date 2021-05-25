@@ -23,6 +23,7 @@
                 <Label Content="School:" FontWeight="Bold" Width="59" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
                 <Label x:Name="label_school" FontWeight="Normal" Width="172" Height="42" RenderTransformOrigin="-0.965,0.616"/>
             </StackPanel>
+            <WrapPanel Name ="pic" Margin="599,5,0,248"/>
 
         </Grid>
     </Border>
