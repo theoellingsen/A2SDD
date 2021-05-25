@@ -20,27 +20,30 @@ namespace A2SDDWPF
 	/// </summary>
 	public partial class ResearcherDetailsView : Window
 	{
-        Researcher researcher;
+        
 		public ResearcherDetailsView(Researcher r)
 		{
 			InitializeComponent();
 
-            researcher = ResearcherController.LoadDetails(r);
-
-            //Title
-            label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
-            label_campus.Content = researcher.Campus;
-            label_positionCurrent.Content = researcher.CurrentJobTitle();
-            label_school.Content = researcher.Unit;
-            
-            if (researcher.Positions.Count == 0)
+            if (r.EmployeeType == EmployeeType.Staff)
 			{
-                PositionorStudent.Content = "Current Degree:";
+                Staff researcher = ResearcherController.LoadStaff(r);
+
+                label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
+                label_campus.Content = researcher.Campus;
+                label_positionCurrent.Content = researcher.CurrentJobTitle();
+                label_school.Content = researcher.Unit;
+                PositionorStudent.Content = "Current Position:";
+
             } else
 			{
-                PositionorStudent.Content = "Current Position:";
-			}
-            
+                Student researcher = ResearcherController.LoadStudent(r);
+                label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
+                label_campus.Content = researcher.Campus;
+                label_positionCurrent.Content = researcher.Degree;
+                label_school.Content = researcher.Unit;
+                PositionorStudent.Content = "Current Degree:";
+            }
 
             //Display Photo (WHEN PHOTO IS COLLECTED CORRECTLY FROM DATABASE, THIS SHOULD WORK)
             /*

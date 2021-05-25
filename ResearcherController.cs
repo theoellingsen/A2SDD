@@ -10,10 +10,16 @@ namespace A2SDDWPF
 {
     public class ResearcherController
     {
-        public static Researcher LoadDetails(Researcher r)
+        public static Student LoadStudent(Researcher r)
 		{
-            return Database.LoadReseacherDetailsView(r);
+            return Database.LoadStudent(r);
 		}
+
+        public static Staff LoadStaff(Researcher r)
+        {
+            return Database.LoadStaff(r);
+        }
+
         public static ObservableCollection<Researcher> LoadResearchers()
         {
             var newList = Database.LoadReseacherListView();

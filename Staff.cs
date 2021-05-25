@@ -7,7 +7,7 @@ namespace A2SDD
 {
     //ESSENTIAL
     enum PublicationLevel { A, B, C, D, E }
-    class Staff : Researcher
+    public class Staff : Researcher
     {
 
         public static float ThreeYearAverage(int ID)
