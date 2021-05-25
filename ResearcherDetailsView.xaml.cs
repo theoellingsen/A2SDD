@@ -35,6 +35,19 @@ namespace A2SDDWPF
                 label_school.Content = researcher.Unit;
                 PositionorStudent.Content = "Current Position:";
 
+                String photo = researcher.Photo;
+
+                var image = new Image();
+                var fullFilePath = @photo;
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+                bitmap.EndInit();
+
+                image.Source = bitmap;
+                pic.Children.Add(image);
+
             } else
 			{
                 Student researcher = ResearcherController.LoadStudent(r);
@@ -43,23 +56,21 @@ namespace A2SDDWPF
                 label_positionCurrent.Content = researcher.Degree;
                 label_school.Content = researcher.Unit;
                 PositionorStudent.Content = "Current Degree:";
+
+                String photo = researcher.Photo;
+
+                var image = new Image();
+                var fullFilePath = @photo;
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
+                bitmap.EndInit();
+
+                image.Source = bitmap;
+                pic.Children.Add(image);
             }
-
-            //Display Photo (WHEN PHOTO IS COLLECTED CORRECTLY FROM DATABASE, THIS SHOULD WORK)
-            /*
-            String photo = researcher.Photo;
-
-            var image = new Image();
-            var fullFilePath = @photo;
-
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-            bitmap.EndInit();
-
-            image.Source = bitmap;
-            pic.Children.Add(image);
-            */ 
+            
         }
     }
 }
