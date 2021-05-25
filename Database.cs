@@ -281,6 +281,8 @@ namespace A2SDD
 
             Staff changed = new Staff();
 
+            r = LoadReseacherDetailsView(r);
+
             changed.ID = r.ID;
             changed.GivenName = r.GivenName;
             changed.FamilyName = r.FamilyName;
@@ -292,6 +294,7 @@ namespace A2SDD
             changed.Photo = r.Photo; 
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
+            changed.Positions = LoadPosition(r);
 
             try
             {
@@ -335,6 +338,8 @@ namespace A2SDD
 
             Student changed = new Student();
 
+            r = LoadReseacherDetailsView(r);
+
             changed.ID = r.ID;
             changed.GivenName = r.GivenName;
             changed.FamilyName = r.FamilyName;
@@ -346,6 +351,7 @@ namespace A2SDD
             changed.Photo = r.Photo; ;
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
+            
 
             try
             {
@@ -361,7 +367,7 @@ namespace A2SDD
                 while (rdr.Read())
                 {
                     changed.Degree = rdr.GetString(0);
-                    
+                    changed.Supervisor_ID = rdr.GetInt32(1);
                 }
 
             }

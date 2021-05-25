@@ -30,15 +30,7 @@
                 <TextBlock Text=")"/>
             </StackPanel>
         </DataTemplate>
-
-
-        <local:Researcher x:Key="Researcher"/>
-
     </Window.Resources>
-
-    <Window.DataContext>
-        <local:Researcher />
-    </Window.DataContext>
 
 
     <Grid Margin="0,0,625,0">

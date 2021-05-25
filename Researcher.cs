@@ -66,6 +66,7 @@ namespace A2SDD
         {
             if (Positions.Count == 0)
 			{
+
                 return "Implement Get Degree";
 			} else
 			{

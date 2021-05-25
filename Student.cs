@@ -4,10 +4,10 @@ using System.Text;
 
 namespace A2SDD
 {
-    class Student : Researcher
+    public class Student : Researcher
     {
         public string Degree {  get; set; }
 
-        public Staff Supervisor { get; set; }
+        public int Supervisor_ID { get; set; }
     }
 }

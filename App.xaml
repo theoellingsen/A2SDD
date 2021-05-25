@@ -18,15 +18,7 @@
                             ObjectType="{x:Type local:Researcher}"
                             MethodName="LoadResearchers">
         </ObjectDataProvider>
-
-        <ObjectDataProvider x:Key="ResearcherDetails"
-                            ObjectType="{x:Type local:Researcher}"
-                            MethodName="ResearcherDetails">
-        </ObjectDataProvider>
-
-
-
-
+        
         <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
                       MethodName="getReport" x:Key="PoorListView"> 
             <ObjectDataProvider.MethodParameters>
