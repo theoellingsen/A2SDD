@@ -21,7 +21,7 @@ namespace A2SDD
         //Part of step 2.3.3 in Week 8 tutorial. This method is a gift to you because .NET's approach to converting strings to enums is so horribly broken
         public static T ParseEnum<T>(string value)
         {
-            return (T)Enum.Parse(typeof(T), value);
+            return (T)Enum.Parse(typeof(T), value.Replace(" ", String.Empty));
         }
 
         /// <summary>
