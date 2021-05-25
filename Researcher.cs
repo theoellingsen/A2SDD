@@ -46,20 +46,21 @@ namespace A2SDD
         public float Performance { get; set; }
 
         
-
+        public ObservableCollection<Position> GetPositions()
+		{
+            ObservableCollection<Position> pos = new ObservableCollection<Position>();
+            foreach (Position p in Positions)
+			{
+                pos.Add(p);
+			}
+            return pos;
+        }
        
         public ObservableCollection<Researcher> getReport(String level)
 		{
             ObservableCollection<Researcher> ol = Report.OrderByPerformance(level);
             return ol;
 		}
-       /*public ObservableCollection<Researcher> GetViewableList()
-		{
-            List<Researcher> rl = Database.LoadReseacherListView();
-            ObservableCollection<Researcher> oc = new ObservableCollection<Researcher>(rl);
-            return oc;
-		}*/
-
         public Position CurrentJob()
         {
             
@@ -81,6 +82,10 @@ namespace A2SDD
 
         public DateTime CurrentJobStart()
         {
+            if (EmployeeType == EmployeeType.Student)
+			{
+                return Start;
+			}
             return Positions.Last().Start;
         }
 

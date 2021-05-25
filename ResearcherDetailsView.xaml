@@ -3,9 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:A2SDDWPF"
+        xmlns:local="clr-namespace:A2SDD"
         mc:Ignorable="d"
         Title="ResearcherDetailsView" Height="450" Width="800">
+
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:Position}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Start}"/>
+                <TextBlock Text=" - "/>
+                <TextBlock Text="{Binding Path=End}"/>
+                <TextBlock Text=": "/>
+                <TextBlock Text="{Binding Path=Level}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+
+
     <Grid HorizontalAlignment="Left" Width="778" Margin="1,1,0,1">
         <StackPanel Orientation="Vertical" MinWidth="120" Margin="0,0,503,382">
             <Label x:Name="label_title" FontSize="20" FontWeight="Bold" Width="275" Height="53"/>
@@ -33,6 +48,13 @@
         <StackPanel Orientation ="Horizontal" Width="275" HorizontalAlignment="Left" Margin="0,270,0,119" RenderTransformOrigin="0.475,0.53">
             <Label Content="Commenced current position:" FontWeight="Bold" Width="182" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
             <Label x:Name="label_current" FontWeight="Normal" Width="93" Height="42" RenderTransformOrigin="-0.965,0.616"/>
+        </StackPanel>
+        <StackPanel Orientation ="Vertical" Width="330" HorizontalAlignment="Left" Margin="0,313,0,0" RenderTransformOrigin="0.475,0.53">
+            <Label x:Name="PrevPos" Content="Previous positions:" FontWeight="Bold" Width="274" Height="26" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" HorizontalAlignment="Left"/>
+            <ListBox Height="92" Width="330"
+                  x:Name="PositionView" SelectionChanged="ListBox_SelectionChanged"
+                 ItemsSource="{Binding Source={StaticResource ResearcherPositions}}" HorizontalAlignment="Left">
+            </ListBox>
         </StackPanel>
         <WrapPanel x:Name ="pic" Margin="568,0,0,171"/>
 

@@ -36,7 +36,10 @@ namespace A2SDDWPF
                 PositionorStudent.Content = "Current Position:";
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
-                label_current.Content = researcher.Start;
+                label_current.Content = researcher.CurrentJobStart();
+                PositionView.ItemsSource = researcher.GetPositions();
+
+
 
                 String photo = researcher.Photo;
 
@@ -61,7 +64,10 @@ namespace A2SDDWPF
                 PositionorStudent.Content = "Current Degree:";
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
-                label_current.Content = researcher.Start;
+                label_current.Content = researcher.CurrentJobStart();
+                PrevPos.Visibility = System.Windows.Visibility.Hidden;
+                PositionView.Visibility = System.Windows.Visibility.Hidden;
+
 
                 String photo = researcher.Photo;
 
@@ -77,6 +83,25 @@ namespace A2SDDWPF
                 pic.Children.Add(image);
             }
             
+        }
+        private void PositionsView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                PositionView.DataContext = e.AddedItems[0];
+
+            }
+        }
+
+
+        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

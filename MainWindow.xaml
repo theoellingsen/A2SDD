@@ -32,7 +32,6 @@
         </DataTemplate>
     </Window.Resources>
 
-
     <Grid Margin="0,0,625,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
