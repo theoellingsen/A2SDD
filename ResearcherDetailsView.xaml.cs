@@ -30,7 +30,7 @@ namespace A2SDDWPF
                 Staff researcher = ResearcherController.LoadStaff(r);
 
                 label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
-                label_campus.Content = researcher.Campus;
+                label_campus.Content = ResearcherController.ParseCampus(researcher.Campus);
                 label_positionCurrent.Content = researcher.CurrentJobTitle();
                 label_school.Content = researcher.Unit;
                 PositionorStudent.Content = "Current Position:";
