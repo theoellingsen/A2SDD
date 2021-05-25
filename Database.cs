@@ -49,6 +49,51 @@ namespace A2SDD
 			}
 		}
 
+        public static List<Publication> LoadPublications(Researcher r)
+        {
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select doi, title, year, type, cite_as, authors, available from publication where authors=?name", conn);
+
+                cmd.Parameters.AddWithValue("name", (String)r.GivenName + " " + r.FamilyName);
+
+                r.Publications = new List<Publication>();
+                while (rdr.Read())
+                {
+                    r.Publications.Add(new Publication
+                    {
+                        DOI = rdr.GetString(0),
+                        Title = rdr.GetString(1),
+                        Year = rdr.GetDateTime(2),
+                        CiteAs = rdr.GetString(3),
+                        Authors = rdr.GetString(4),
+                        Available = rdr.GetDateTime(5)
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            return r.Publications;
+        }
+        
+
         public static List<Position> LoadPosition(Researcher r)
         {
 
