@@ -276,12 +276,7 @@ namespace A2SDD
 
         public static Staff LoadStaff(Researcher r)
         {
-            MySqlConnection conn = GetConnection();
-            MySqlDataReader rdr = null;
-
             Staff changed = new Staff();
-
-            r = LoadReseacherDetailsView(r);
 
             changed.ID = r.ID;
             changed.GivenName = r.GivenName;
@@ -295,21 +290,27 @@ namespace A2SDD
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
             changed.Positions = LoadPosition(r);
+            
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+
+            r = LoadReseacherDetailsView(r);
+
+            
 
             try
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select level" +
-                                                    "from researcher " +
-                                                    "where researcher_id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT level FROM researcher WHERE id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
 
                 while (rdr.Read())
                 {
-
+                    changed.CurrentLevel = ParseEnum<CurrentLevel>(rdr.GetString(0));
                 }
 
             }

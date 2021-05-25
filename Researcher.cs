@@ -11,6 +11,8 @@ namespace A2SDD
     public enum Campus { Hobart, Launceston, CradleCoast }
 
     public enum EmployeeType { Staff, Student }
+
+    public enum CurrentLevel { A, B, C, D, E }
     public class Researcher : ResearcherController
     {
         public int ID { get; set; }
@@ -32,6 +34,8 @@ namespace A2SDD
         public String Photo { get; set; }
 
         public DateTime Start { get; set; }
+
+        public CurrentLevel CurrentLevel { get; set; }
 
         public DateTime CurrentStart { get; set; }
 
