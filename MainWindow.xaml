@@ -9,12 +9,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" ResizeMode="CanResize" MinHeight="450" MinWidth="800"
+        Title="MainWindow" ResizeMode="CanResize"
         xmlns:c="clr-namespace:A2SDD"
         xmlns:local="clr-namespace:A2SDD"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     
-        xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher" Height="447" Width="750">
+        xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher" Height="Auto" Width="Auto">
 
 
 
@@ -32,20 +32,20 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid Margin="0,0,0,4">
+    <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="163*"/>
-            <ColumnDefinition Width="637*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" MinHeight="68"/>
-            <RowDefinition Height="Auto" MinHeight="202"/>
-            <RowDefinition Height="Auto" MinHeight="3292.75"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
 
-        <DockPanel LastChildFill="False" Grid.Row="0" Margin="0,0,0,10" Grid.RowSpan="2">
-            <Menu DockPanel.Dock="Top" Height="81">
+        <DockPanel LastChildFill="False" Grid.Row="0" Margin="0,0,0,0" Grid.RowSpan="2">
+            <Menu DockPanel.Dock="Top" Height="81" Width="282">
                 <MenuItem Header="Filter">
                     <MenuItem Header="Level A" Click="FilterClickA"/>
                     <MenuItem Header="Level B" Click="FilterClickB"/>
@@ -67,7 +67,7 @@
                 <Button x:Name="Reset" Click="ButtonReset_Click" Content="Reset" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50" Height="20"/>
             </Menu>
             <ListBox x:Name="ResearcherListView" SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF"  VerticalContentAlignment="Top" DockPanel.Dock="top" Height="348"/>
+                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF"  VerticalContentAlignment="Top" DockPanel.Dock="top" Height="320"/>
         </DockPanel>
     </Grid>
 
