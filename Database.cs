@@ -21,6 +21,10 @@ namespace A2SDD
         //Part of step 2.3.3 in Week 8 tutorial. This method is a gift to you because .NET's approach to converting strings to enums is so horribly broken
         public static T ParseEnum<T>(string value)
         {
+            if (value == "Cradle Coast")
+            {
+                value = "CradleCoast";
+            }
             return (T)Enum.Parse(typeof(T), value);
         }
 
@@ -277,6 +281,7 @@ namespace A2SDD
         public static Staff LoadStaff(Researcher r)
         {
             Staff changed = new Staff();
+            r = LoadReseacherDetailsView(r);
 
             changed.ID = r.ID;
             changed.GivenName = r.GivenName;
@@ -293,11 +298,6 @@ namespace A2SDD
             
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
-
-
-            r = LoadReseacherDetailsView(r);
-
-            
 
             try
             {
