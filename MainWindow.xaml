@@ -32,17 +32,20 @@
         </DataTemplate>
     </Window.Resources>
 
-    <Grid Margin="0,0,625,0">
+    <Grid Margin="0,0,0,4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="637*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="68"/>
+            <RowDefinition Height="Auto" MinHeight="202"/>
+            <RowDefinition Height="Auto" MinHeight="3292.75"/>
         </Grid.RowDefinitions>
-        <ListBox x:Name="ResearcherListView" SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF" VerticalContentAlignment="Top" Margin="0,60,4,42" Grid.RowSpan="2"/>
 
-        <DockPanel LastChildFill="False" Grid.Row="0">
-            <Menu DockPanel.Dock="Top">
+
+        <DockPanel LastChildFill="False" Grid.Row="0" Margin="0,0,0,10" Grid.RowSpan="2">
+            <Menu DockPanel.Dock="Top" Height="81">
                 <MenuItem Header="Filter">
                     <MenuItem Header="Level A" Click="FilterClickA"/>
                     <MenuItem Header="Level B" Click="FilterClickB"/>
@@ -63,6 +66,8 @@
                 <Button x:Name="Search" Click="Button_Click" Content="Search" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50"/>
                 <Button x:Name="Reset" Click="ButtonReset_Click" Content="Reset" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50" Height="20"/>
             </Menu>
+            <ListBox x:Name="ResearcherListView" SelectionChanged="ListBox_SelectionChanged"
+                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF"  VerticalContentAlignment="Top" DockPanel.Dock="top" Height="348"/>
         </DockPanel>
     </Grid>
 

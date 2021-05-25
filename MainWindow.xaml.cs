@@ -61,7 +61,7 @@ namespace A2SDDWPF
 			
 		}
 
-	private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+		private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
 		{
 
 		}

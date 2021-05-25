@@ -20,8 +20,7 @@
         </ObjectDataProvider>
 
         <ObjectDataProvider x:Key="ResearcherPositions"
-                            ObjectType="{x:Type local:Position}"
-                            MethodName="GetPositions">
+                            ObjectType="{x:Type local:Position}">
         </ObjectDataProvider>
 
         <ObjectDataProvider ObjectType="{x:Type local:Researcher}"

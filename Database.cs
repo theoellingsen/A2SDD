@@ -59,7 +59,7 @@ namespace A2SDD
 
                 MySqlCommand cmd = new MySqlCommand("SELECT publication.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND id = ?id", conn);
 
-                cmd.Parameters.AddWithValue("name", (String)r.GivenName + " " + r.FamilyName);
+                cmd.Parameters.AddWithValue("id", r.ID);
 
                 r.Publications = new List<Publication>();
                 while (rdr.Read())
@@ -307,7 +307,7 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
-
+                    r.CurrentLevel = ParseEnum<CurrentLevel>(rdr.GetString(0));
                 }
 
             }
@@ -315,6 +315,7 @@ namespace A2SDD
             {
                 Console.WriteLine("Error connecting to database: " + e);
             }
+            
             finally
             {
                 if (rdr != null)
@@ -326,7 +327,37 @@ namespace A2SDD
                     conn.Close();
                 }
             }
+            
+            try
+            {
+                conn.Open();
 
+                MySqlCommand cmd = new MySqlCommand("SELECT level FROM researcher WHERE id=?id", conn);
+
+                cmd.Parameters.AddWithValue("id", r.ID);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    r.CurrentLevel = ParseEnum<CurrentLevel>(rdr.GetString(0));
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
             return changed;
         }
 
