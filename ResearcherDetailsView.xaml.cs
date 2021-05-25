@@ -31,10 +31,6 @@ namespace A2SDDWPF
 
                 label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
                 label_campus.Content = researcher.Campus;
-                if(researcher.Campus == Campus.CradleCoast)
-                {
-                    label_campus.Content = "Cradle Coast";
-                }
                 label_positionCurrent.Content = researcher.CurrentJobTitle();
                 label_school.Content = researcher.Unit;
                 PositionorStudent.Content = "Current Position:";
