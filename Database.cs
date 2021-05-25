@@ -117,7 +117,7 @@ namespace A2SDD
                     {
                         Level = ParseEnum<EmploymentLevel>(rdr.GetString(0)),
                         Start = rdr.GetDateTime(1),
-                        End = rdr.GetDateTime(2)
+                        //End = rdr.GetDateTime(2)
                     });
                 }
             }
@@ -405,11 +405,14 @@ namespace A2SDD
                 
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT count(*) FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND id = ?id and year >= ?start and year <= ?end", conn);
+                //Do not change this command @David H
+                MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
+                                                    "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.Parameters.AddWithValue("start", startYear);
                 cmd.Parameters.AddWithValue("end", endYear);
 
+                
                 count = Int32.Parse(cmd.ExecuteScalar().ToString());
             }
             catch (MySqlException e)

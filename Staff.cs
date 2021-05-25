@@ -18,11 +18,6 @@ namespace A2SDD
             DateTime end = new DateTime(2015, 1, 1);
             DateTime start = end.AddYears(-3);
             int publications = Database.LoadPublications3YearAVerage(ID, start, end);
-
-            // Select the publications less than three years old
-           
-
-            // Create list pf publications from selected
           
 
             // Return average over three years
