@@ -57,7 +57,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select doi, title, year, type, cite_as, authors, available from publication where authors=?name", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT doi, title, year, type, cite_as, authors, available FROM publication WHERE authors LIKE '%?name%'", conn);
 
                 cmd.Parameters.AddWithValue("name", (String)r.GivenName + " " + r.FamilyName);
 
@@ -306,6 +306,7 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
+
                 }
 
             }
