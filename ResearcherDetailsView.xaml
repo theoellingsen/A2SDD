@@ -13,7 +13,7 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="{Binding Path=StartString}"/>
                 <TextBlock Text=" - "/>
-                <TextBlock Text="{Binding Path=End}"/>
+                <TextBlock Text="{Binding Path=EndString}"/>
                 <TextBlock Text=": "/>
                 <TextBlock Text="{Binding Path=titleName}"/>
             </StackPanel>
@@ -70,8 +70,12 @@
             <Label x:Name="label_tenure" FontWeight="Normal" Width="147" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
         </StackPanel>
         <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="578,207,0,37" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left" Width="200">
-            <Label Content="3-Year Average:" FontWeight="Bold" Width="101" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+            <Label x:Name="yrAve" Content="3-Year Average:" FontWeight="Bold" Width="101" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
             <Label x:Name="label_average" FontWeight="Normal" Width="99" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
+        </StackPanel>
+        <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="578,244,0,0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left" Width="200">
+            <Label x:Name="perf" Content="Performance:" FontWeight="Bold" Width="93" Height="42" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+            <Label x:Name="label_performance" FontWeight="Normal" Width="99" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
         </StackPanel>
 
     </Grid>

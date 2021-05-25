@@ -40,6 +40,7 @@ namespace A2SDDWPF
                 PositionView.ItemsSource = researcher.GetPositions();
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
+                label_performance.Content = Staff.calcPerformance(r) + "%";
 
 
 
@@ -70,7 +71,10 @@ namespace A2SDDWPF
                 PrevPos.Visibility = System.Windows.Visibility.Hidden;
                 PositionView.Visibility = System.Windows.Visibility.Hidden;
                 label_tenure.Content = researcher.Tenure() + " Years";
-                
+                label_average.Visibility = System.Windows.Visibility.Hidden;
+                yrAve.Visibility = System.Windows.Visibility.Hidden;
+                label_performance.Visibility = System.Windows.Visibility.Hidden;
+                perf.Visibility = System.Windows.Visibility.Hidden;
 
                 String photo = researcher.Photo;
 

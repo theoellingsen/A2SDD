@@ -51,8 +51,12 @@ namespace A2SDD
             ObservableCollection<Position> pos = new ObservableCollection<Position>();
             foreach (Position p in Positions)
 			{
-                pos.Add(p);
-			}
+                if (Positions.IndexOf(p)+1 != Positions.Count)
+				{
+                    pos.Add(p);
+                }
+               
+			} 
             return pos;
         }
        
