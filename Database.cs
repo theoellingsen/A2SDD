@@ -182,7 +182,6 @@ namespace A2SDD
             return researchers;
         }
 
-        
         public static Researcher LoadReseacherDetailsView(Researcher r)
         {
             MySqlConnection conn = GetConnection();
@@ -192,8 +191,8 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select type, unit, campus, email, photo, utas_start, current_start " +
-                                                    "from researcher " +
+                MySqlCommand cmd = new MySqlCommand("SELECT type, unit, campus, email, photo, utas_start, current_start " +
+                                                    "FROM 'researcher' " +
                                                     "where researcher_id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);

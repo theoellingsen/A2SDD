@@ -210,6 +210,10 @@ namespace A2SDDWPF
 		{
 			ListBox listBox = (ListBox)sender;
 			Researcher selected = (Researcher) listBox.SelectedItems[0];
+
+			ResearcherDetailsView r = new ResearcherDetailsView(selected);
+			r.Show();
+
 		}
 	}
 

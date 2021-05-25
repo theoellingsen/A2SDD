@@ -8,9 +8,12 @@ using A2SDD;
 
 namespace A2SDDWPF
 {
-    class ResearcherController
+    public class ResearcherController
     {
-
+        public static Researcher LoadDetails(Researcher r)
+		{
+            return Database.LoadReseacherDetailsView(r);
+		}
         public static ObservableCollection<Researcher> LoadResearchers()
         {
             var newList = Database.LoadReseacherListView();
@@ -18,7 +21,7 @@ namespace A2SDDWPF
             return rList;
         }
 
-        public static ObservableCollection<Staff> LoadStaff()
+        static ObservableCollection<Staff> LoadStaff()
         {
             var baseList = Database.LoadReseacherListView();
             var staffList = from some in baseList

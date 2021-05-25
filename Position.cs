@@ -4,8 +4,8 @@ using System.Text;
 
 namespace A2SDD
 {
-    enum EmploymentLevel { Student, A, B, C, D, E }
-    class Position
+    public enum EmploymentLevel {Student, A, B, C, D, E }
+    public class Position
     {
         public EmploymentLevel Level { get; set; }
         public DateTime Start { get; set; }
@@ -25,7 +25,7 @@ namespace A2SDD
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        public String ToTitle(EmploymentLevel l)
+        String ToTitle(EmploymentLevel l)
         {
             String levelName = l.ToString();
 

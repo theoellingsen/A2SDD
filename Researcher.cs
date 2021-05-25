@@ -11,7 +11,7 @@ namespace A2SDD
     public enum Campus { Hobart, Launceston, CradleCoast }
 
     public enum EmployeeType { Staff, Student }
-    class Researcher : ResearcherController
+    public class Researcher : ResearcherController
     {
         public int ID { get; set; }
 

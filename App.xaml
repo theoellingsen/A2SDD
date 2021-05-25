@@ -19,7 +19,7 @@
                             MethodName="LoadResearchers">
         </ObjectDataProvider>
 
-        <ObjectDataProvider x:Key="ResearcherDetailsView"
+        <ObjectDataProvider x:Key="ResearcherDetails"
                             ObjectType="{x:Type local:Researcher}"
                             MethodName="ResearcherDetails">
         </ObjectDataProvider>
