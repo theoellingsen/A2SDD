@@ -117,6 +117,7 @@ namespace A2SDD
                     {
                         Level = ParseEnum<EmploymentLevel>(rdr.GetString(0)),
                         Start = rdr.GetDateTime(1),
+                        End = rdr.IsDBNull(2) ? null : rdr.GetDateTime(2),
                         //End = rdr.GetDateTime(2)
                     });
                 }

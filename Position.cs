@@ -9,7 +9,7 @@ namespace A2SDD
     {
         public EmploymentLevel Level { get; set; }
         public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public DateTime? End { get; set; }
 
         public String StartString { get { return DateFormat(Start); } set { } }
         public String titleName { get { return ToTitle(Level); } set { } }
