@@ -34,6 +34,9 @@ namespace A2SDDWPF
                 label_positionCurrent.Content = researcher.CurrentJobTitle();
                 label_school.Content = researcher.Unit;
                 PositionorStudent.Content = "Current Position:";
+                label_email.Content = researcher.Email;
+                label_commenced.Content = researcher.Start;
+                label_current.Content = researcher.Start;
 
                 String photo = researcher.Photo;
 
@@ -56,6 +59,9 @@ namespace A2SDDWPF
                 label_positionCurrent.Content = researcher.Degree;
                 label_school.Content = researcher.Unit;
                 PositionorStudent.Content = "Current Degree:";
+                label_email.Content = researcher.Email;
+                label_commenced.Content = researcher.Start;
+                label_current.Content = researcher.Start;
 
                 String photo = researcher.Photo;
 
