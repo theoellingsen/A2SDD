@@ -315,37 +315,6 @@ namespace A2SDD
             {
                 Console.WriteLine("Error connecting to database: " + e);
             }
-            
-            finally
-            {
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
-            
-            try
-            {
-                conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand("SELECT level FROM researcher WHERE id=?id", conn);
-
-                cmd.Parameters.AddWithValue("id", r.ID);
-                rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    r.CurrentLevel = ParseEnum<CurrentLevel>(rdr.GetString(0));
-                }
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine("Error connecting to database: " + e);
-            }
 
             finally
             {
