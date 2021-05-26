@@ -46,7 +46,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT pub.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND researcher_id = ?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT pub.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND researcher_id = ?id ORDER BY year DESC, title", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
@@ -93,7 +93,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT level, start, end FROM position WHERE position.id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT level, start, end FROM position WHERE position.id=?id ORDER BY start ASC", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
 
@@ -141,7 +141,7 @@ namespace A2SDD
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT type, id, given_name, family_name, title, email FROM researcher", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT type, id, given_name, family_name, title, email FROM researcher ORDER BY family_name", conn);
 
                 rdr = cmd.ExecuteReader();
 
@@ -438,7 +438,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT given_name, family_name FROM researcher WHERE supervisor_id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT given_name, family_name FROM researcher WHERE supervisor_id=?id ORDER BY family_name", conn);
 
                 cmd.Parameters.AddWithValue("id", s.ID);
                 rdr = cmd.ExecuteReader();
