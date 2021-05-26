@@ -92,6 +92,7 @@ namespace A2SDDWPF
                 perf.Visibility = System.Windows.Visibility.Hidden;
                 //label_publications.Content = researcher.PublicationsCount();
                 //label_supervisions.Visibility = System.Windows.Visibility.Hidden;
+                OpenSupervisions.Visibility = System.Windows.Visibility.Collapsed;
 
                 String photo = researcher.Photo;
 
