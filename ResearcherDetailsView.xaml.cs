@@ -47,7 +47,8 @@ namespace A2SDDWPF
                     noPositions.Add("No previous positions");
                     PositionView.ItemsSource = noPositions;
 				}
-                
+                PublicationView.ItemsSource = PublicationsController.LoadPublicationsFor(researcher);
+
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
                 label_performance.Content = Staff.calcPerformance(r) + "%";
@@ -131,7 +132,7 @@ namespace A2SDDWPF
 
         private void OpenPublications_Click(object sender, RoutedEventArgs e)
         {
-            PublicationsPopUp.IsOpen = true;
+            
         }
 
         private void SupervisionsPopUp_Opened(object sender, EventArgs e)
