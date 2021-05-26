@@ -6,7 +6,7 @@ namespace A2SDD
 {
     //ESSENTIAL
 
-    enum PublicationType { Conference, Journal, Other }
+    public enum PublicationType { Conference, Journal, Other }
     public class Publication
     {
         public String DOI { get; set; }
