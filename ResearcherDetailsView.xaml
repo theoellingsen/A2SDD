@@ -18,6 +18,14 @@
                 <TextBlock Text="{Binding Path=titleName}"/>
             </StackPanel>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:Publication}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Year}"/>
+                <TextBlock Text=" - "/>
+                <TextBlock Text="{Binding Path=Title}"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -77,19 +85,19 @@
             <Label x:Name="label_performance" FontWeight="Normal" Width="99" Height="42" RenderTransformOrigin="-0.965,0.616" VerticalContentAlignment="Top"/>
         </StackPanel>
 
-        <StackPanel Orientation ="Vertical" Width="248" HorizontalAlignment="Left" Margin="284,60,0,275" RenderTransformOrigin="0.475,0.53" Grid.RowSpan="2">
+        <StackPanel Orientation ="Vertical" Width="299" HorizontalAlignment="Left" Margin="279,60,0,124" RenderTransformOrigin="0.475,0.53" Grid.RowSpan="2">
             <Label x:Name="label_publications" Content="Publications:" FontWeight="Bold" Width="82" Height="27" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" HorizontalAlignment="Left"/>
-            <ListBox Width="248"
+            <ListBox Width="Auto"
                   x:Name="PublicationView" SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source={StaticResource ResearcherPositions}}" HorizontalAlignment="Left" Height="69"/>
+                 ItemsSource="{Binding Source={StaticResource ResearcherPublication}}" HorizontalAlignment="Left" Height="Auto"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Width="118" HorizontalAlignment="Left" Margin="280,9,0,0" RenderTransformOrigin="0.475,0.53" Height="22" VerticalAlignment="Top" Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Width="118" HorizontalAlignment="Left" Margin="284,88,0,0" RenderTransformOrigin="0.475,0.53" Height="22" VerticalAlignment="Top" Grid.Row="1">
             <Label x:Name="label_supervisions" Content="Supervisions:" FontWeight="Bold" Width="85" Height="27" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left"/>
         </StackPanel>
         <Popup>
             <Popup Margin="10,10,0,13" Name="SupervisionsPopUp" HorizontalAlignment="Left" VerticalAlignment="Top" Width="194" Height="200" IsOpen="False" Opened="SupervisionsPopUp_Opened"/>
         </Popup>
-        <Button x:Name="OpenSupervisions" Click="OpenSupervisions_Click" Content="show names" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Margin="417,19,142,248" Grid.Row="1"/>
+        <Button x:Name="OpenSupervisions" Click="OpenSupervisions_Click" Content="show names" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Margin="417,95,142,172" Grid.Row="1"/>
 
 
     </Grid>
