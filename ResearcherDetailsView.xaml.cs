@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 using A2SDD;
 
 namespace A2SDDWPF
@@ -37,7 +38,16 @@ namespace A2SDDWPF
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
                 label_current.Content = researcher.CurrentJobStart();
-                PositionView.ItemsSource = researcher.GetPositions();
+                if (researcher.Positions.Count > 1)
+				{
+                    PositionView.ItemsSource = researcher.GetPositions();
+                } else
+				{
+                    ObservableCollection<string> noPositions = new ObservableCollection<string>();
+                    noPositions.Add("No previous positions");
+                    PositionView.ItemsSource = noPositions;
+				}
+                
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
                 label_performance.Content = Staff.calcPerformance(r) + "%";
