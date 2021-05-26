@@ -38,17 +38,6 @@ namespace A2SDD
             return conn;
         }
 
-        private static DateTime IfNotNull(DateTime t)
-		{
-            if (t != null)
-			{
-                return DateTime.Today;
-			} else
-			{
-                return t;
-			}
-		}
-
         public static List<Publication> LoadPublications(Researcher r)
         {
             MySqlConnection conn = GetConnection();
@@ -137,40 +126,6 @@ namespace A2SDD
                     conn.Close();
                 }
             }
-            /*try
-            {
-                conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand("SELECT end FROM position where position.id=?id and end IS NOT NULL", conn);
-
-                cmd.Parameters.AddWithValue("id", r.ID);
-
-                rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-
-                    r.Positions.Add(new Position
-                    {
-                        End = rdr.GetDateTime(0)
-                    });
-                }
-            }
-            catch (MySqlException e)
-            {
-                Console.WriteLine("Error connecting to database: " + e);
-            }
-            finally
-            {
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }*/
             return r.Positions;
         }
 
