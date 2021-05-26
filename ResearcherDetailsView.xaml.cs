@@ -51,7 +51,8 @@ namespace A2SDDWPF
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
                 label_performance.Content = Staff.calcPerformance(r) + "%";
-
+                //label_publications.Content = researcher.PublicationsCount();
+                //label_supervisions.Content = Staff.LoadStudent(r);
 
 
                 String photo = researcher.Photo;
@@ -85,6 +86,8 @@ namespace A2SDDWPF
                 yrAve.Visibility = System.Windows.Visibility.Hidden;
                 label_performance.Visibility = System.Windows.Visibility.Hidden;
                 perf.Visibility = System.Windows.Visibility.Hidden;
+                //label_publications.Content = researcher.PublicationsCount();
+                //label_supervisions.Visibility = System.Windows.Visibility.Hidden;
 
                 String photo = researcher.Photo;
 
@@ -119,6 +122,26 @@ namespace A2SDDWPF
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void OpenSupervisions_Click(object sender, RoutedEventArgs e)
+        {
+            SupervisionsPopUp.IsOpen = true;
+        }
+
+        private void OpenPublications_Click(object sender, RoutedEventArgs e)
+        {
+            PublicationsPopUp.IsOpen = true;
+        }
+
+        private void SupervisionsPopUp_Opened(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PublicationsPopUp_Opened(object sender, EventArgs e)
+        {
+            
         }
     }
 }
