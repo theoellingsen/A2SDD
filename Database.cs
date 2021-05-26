@@ -51,7 +51,7 @@ namespace A2SDD
                 cmd.Parameters.AddWithValue("id", r.ID);
 
                 r.Publications = new List<Publication>();
-                while (rdr.Read())
+                while (rdr.Read() && rdr != null)
                 {
                     r.Publications.Add(new Publication
                     {
