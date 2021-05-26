@@ -57,7 +57,7 @@ namespace A2SDD
                     {
                         DOI = rdr.GetString(0),
                         Title = rdr.GetString(1),
-                        Year = rdr.GetDateTime(2),
+                        Year = rdr.GetString(2),
                         CiteAs = rdr.GetString(3),
                         Authors = rdr.GetString(4),
                         Available = rdr.GetDateTime(5)

@@ -12,7 +12,7 @@ namespace A2SDD
         public String DOI { get; set; }
         public String Title { get; set; }
         public String Authors { get; set; }
-        public DateTime Year { get; set; }
+        public String Year { get; set; }
         PublicationType Type { get; set; }
         public String CiteAs { get; set; }
         public DateTime Available { get; set; }
@@ -21,7 +21,7 @@ namespace A2SDD
         {
             DateTime Current = DateTime.Now;
 
-            return DateTime.Compare(Current, p.Year);
+            return DateTime.Compare(Current, p.Available);
         }
     }
 }
