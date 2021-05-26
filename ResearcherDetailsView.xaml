@@ -59,10 +59,9 @@
         </StackPanel>
         <StackPanel Orientation ="Vertical" Width="330" HorizontalAlignment="Left" Margin="0,170,0,0" RenderTransformOrigin="0.475,0.53" Grid.Row="1">
             <Label x:Name="PrevPos" Content="Previous positions:" FontWeight="Bold" Width="274" Height="26" RenderTransformOrigin="-0.965,0.616" HorizontalContentAlignment="Left" HorizontalAlignment="Left"/>
-            <ListBox Height="100" Width="330"
+            <ListBox Width="330"
                   x:Name="PositionView" SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source={StaticResource ResearcherPositions}}" HorizontalAlignment="Left">
-            </ListBox>
+                 ItemsSource="{Binding Source={StaticResource ResearcherPositions}}" HorizontalAlignment="Left"/>
         </StackPanel>
         <WrapPanel x:Name ="pic" VerticalAlignment="Top" Height="300" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="200"/>
         <StackPanel Orientation ="Horizontal" RenderTransformOrigin="0.475,0.53" Margin="578,157,0,87" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left" Width="200">
