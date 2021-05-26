@@ -50,8 +50,17 @@ namespace A2SDDWPF
                     noPositions.Add("No previous positions");
                     PositionView.ItemsSource = noPositions;
 				}
-                PublicationView.ItemsSource = PublicationsController.LoadPublicationsFor(researcher);
 
+                ObservableCollection<Publication> publications = PublicationsController.LoadPublicationsFor(researcher);
+
+                if (publications.Count != 0)
+				{
+                    PublicationView.ItemsSource = publications;
+                } else
+				{
+                    ObservableCollection<string> noPositions = new ObservableCollection<string>();
+                    noPositions.Add("No publications");
+                }
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
                 label_performance.Content = Staff.calcPerformance(r) + "%";
@@ -93,6 +102,18 @@ namespace A2SDDWPF
                 //label_publications.Content = researcher.PublicationsCount();
                 //label_supervisions.Visibility = System.Windows.Visibility.Hidden;
                 OpenSupervisions.Visibility = System.Windows.Visibility.Collapsed;
+
+                ObservableCollection<Publication> publications = PublicationsController.LoadPublicationsFor(researcher);
+
+                if (publications.Count != 0)
+                {
+                    PublicationView.ItemsSource = publications;
+                }
+                else
+                {
+                    ObservableCollection<string> noPositions = new ObservableCollection<string>();
+                    noPositions.Add("No publications");
+                }
 
                 String photo = researcher.Photo;
 
