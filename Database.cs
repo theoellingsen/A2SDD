@@ -50,6 +50,7 @@ namespace A2SDD
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
+                r.Publications = new List<Publication>();
 
                 while (rdr.Read())
                 {
