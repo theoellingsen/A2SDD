@@ -38,17 +38,6 @@ namespace A2SDD
             return conn;
         }
 
-        private static DateTime IfNotNull(DateTime t)
-		{
-            if (t != null)
-			{
-                return DateTime.Today;
-			} else
-			{
-                return t;
-			}
-		}
-
         public static List<Publication> LoadPublications(Researcher r)
         {
             MySqlConnection conn = GetConnection();
@@ -92,7 +81,7 @@ namespace A2SDD
             }
             return r.Publications;
         }
-        
+
 
         public static List<Position> LoadPosition(Researcher r)
         {
@@ -106,7 +95,7 @@ namespace A2SDD
                 MySqlCommand cmd = new MySqlCommand("SELECT level, start, end FROM position WHERE position.id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
-                
+
                 rdr = cmd.ExecuteReader();
 
 
@@ -202,7 +191,7 @@ namespace A2SDD
                         Title = rdr.GetString(4),
                         Email = rdr.GetString(5)
 
-                    }) ;
+                    });
                 }
                 conn.Close();
             }
@@ -222,9 +211,9 @@ namespace A2SDD
                 }
             }
             foreach (Researcher r in researchers)
-			{
+            {
                 r.Positions = LoadPosition(r);
-			}
+            }
 
             return researchers;
         }
@@ -232,7 +221,7 @@ namespace A2SDD
         public static Researcher LoadReseacherDetailsView(Researcher r)
         {
             MySqlConnection conn = GetConnection();
-            MySqlDataReader rdr = null; 
+            MySqlDataReader rdr = null;
 
             try
             {
@@ -291,7 +280,7 @@ namespace A2SDD
             changed.Unit = r.Unit;
             changed.Campus = r.Campus;
             changed.Email = r.Email;
-            changed.Photo = r.Photo; 
+            changed.Photo = r.Photo;
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
             changed.Positions = LoadPosition(r);
@@ -350,7 +339,7 @@ namespace A2SDD
             changed.Photo = r.Photo; ;
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
-            
+
 
             try
             {
@@ -403,7 +392,7 @@ namespace A2SDD
 
             try
             {
-                
+
                 conn.Open();
 
                 //Do not change this command @David H
@@ -413,7 +402,7 @@ namespace A2SDD
                 cmd.Parameters.AddWithValue("start", startYear);
                 cmd.Parameters.AddWithValue("end", endYear);
 
-                
+
                 count = Int32.Parse(cmd.ExecuteScalar().ToString());
             }
             catch (MySqlException e)
@@ -431,6 +420,31 @@ namespace A2SDD
                     conn.Close();
                 }
             }
+            return count;
+        }
+
+        public static int SupervisionsCount(int id)
+        {
+            int count = 0;
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM researcher WHERE supervisor_id=?id", conn);
+
+                cmd.Parameters.AddWithValue("id", id);
+                rdr = cmd.ExecuteReader();
+
+                count = Int32.Parse(cmd.ExecuteScalar().ToString());
+
+            }
+            catch (MySqlException e)
+            {
+            Console.WriteLine("Error connecting to database: " + e);
+            }
+
             return count;
         }
     }
