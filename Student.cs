@@ -8,6 +8,6 @@ namespace A2SDD
     {
         public string Degree {  get; set; }
 
-        public int Supervisor_ID { get; set; }
+        public Staff Supervisor { get; set; }
     }
 }

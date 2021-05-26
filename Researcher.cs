@@ -60,7 +60,6 @@ namespace A2SDD
             return pos;
         }
 
-      
         public ObservableCollection<Researcher> getReport(String level)
 		{
             ObservableCollection<Researcher> ol = Report.OrderByPerformance(level);

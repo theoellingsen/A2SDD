@@ -10,6 +10,11 @@ namespace A2SDDWPF
 {
     public class ResearcherController
     {
+        public static ObservableCollection<Student> GetSupervisions(Staff s)
+        {
+            return new ObservableCollection<Student>(Database.LoadSupervisions(s));
+        }
+
         public static Student LoadStudent(Researcher r)
 		{
             return Database.LoadStudent(r);

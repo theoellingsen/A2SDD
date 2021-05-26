@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace A2SDD
 {
@@ -9,6 +10,7 @@ namespace A2SDD
     enum PublicationLevel { A, B, C, D, E }
     public class Staff : Researcher
     {
+        public List<Student> Supervisions { get; set; }
 
         public static float ThreeYearAverage(int ID)
         {
@@ -22,6 +24,13 @@ namespace A2SDD
 
             // Return average over three years
             return publications / 3;
+        }
+
+        public static float SupervisionsCount(int ID)
+        {
+            int supervisions = Database.LoadSupervisionsCount(ID);
+
+            return supervisions;
         }
 
         public static float calcPerformance(Researcher r)

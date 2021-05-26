@@ -250,7 +250,7 @@ namespace A2SDD
             changed.Photo = r.Photo;
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
-            changed.Positions = LoadPosition(r);
+            
 
             try
             {
@@ -283,6 +283,9 @@ namespace A2SDD
                     conn.Close();
                 }
             }
+            changed.Positions = LoadPosition(r);
+            changed.Supervisions = LoadSupervisions(changed);
+
             return changed;
         }
 
@@ -306,7 +309,7 @@ namespace A2SDD
             changed.Photo = r.Photo; ;
             changed.Start = r.Start;
             changed.CurrentStart = r.CurrentStart;
-
+            changed.Supervisor = new Staff();
 
             try
             {
@@ -320,7 +323,7 @@ namespace A2SDD
                 while (rdr.Read())
                 {
                     changed.Degree = rdr.GetString(0);
-                    changed.Supervisor_ID = rdr.GetInt32(1);
+                    changed.Supervisor.ID = rdr.GetInt32(1);
                 }
 
             }
@@ -390,11 +393,13 @@ namespace A2SDD
             return count;
         }
 
-        public static int SupervisionsCount(int id)
+        public static int LoadSupervisionsCount(int id)
         {
             int count = 0;
+
             MySqlConnection conn = GetConnection();
             MySqlDataReader rdr = null;
+
             try
             {
                 conn.Open();
@@ -402,17 +407,111 @@ namespace A2SDD
                 MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM researcher WHERE supervisor_id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", id);
-                rdr = cmd.ExecuteReader();
 
                 count = Int32.Parse(cmd.ExecuteScalar().ToString());
 
             }
             catch (MySqlException e)
             {
-            Console.WriteLine("Error connecting to database: " + e);
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
 
             return count;
+        }
+
+        public static List<Student> LoadSupervisions(Staff s)
+        {
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT given_name, family_name FROM researcher WHERE supervisor_id=?id", conn);
+
+                cmd.Parameters.AddWithValue("id", s.ID);
+                rdr = cmd.ExecuteReader();
+
+                s.Supervisions = new List<Student>();
+
+                while (rdr.Read())
+                {
+                    s.Supervisions.Add(new Student
+                    {
+                        GivenName = rdr.GetString(0),
+                        FamilyName = rdr.GetString(1),
+                    });
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return s.Supervisions;
+        }
+
+        public static Staff LoadSupervisor(Student s)
+        {
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT given_name, family_name FROM researcher WHERE id=?id", conn);
+
+                cmd.Parameters.AddWithValue("id", s.Supervisor.ID);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    s.Supervisor = new Staff
+                    {
+                        GivenName = rdr.GetString(0),
+                        FamilyName = rdr.GetString(1)
+                    };
+                }
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return s.Supervisor;
         }
     }
 }

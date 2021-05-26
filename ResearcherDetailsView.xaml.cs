@@ -21,6 +21,7 @@ namespace A2SDDWPF
 	/// </summary>
 	public partial class ResearcherDetailsView : Window
 	{
+        public Staff staffmember { get; set; }
         
 		public ResearcherDetailsView(Researcher r)
 		{
@@ -29,6 +30,8 @@ namespace A2SDDWPF
             if (r.EmployeeType == EmployeeType.Staff)
 			{
                 Staff researcher = ResearcherController.LoadStaff(r);
+
+                staffmember = researcher;
 
                 label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
                 label_campus.Content = ResearcherController.ParseCampus(researcher.Campus);
@@ -53,7 +56,7 @@ namespace A2SDDWPF
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
                 label_performance.Content = Staff.calcPerformance(r) + "%";
                 //label_publications.Content = researcher.PublicationsCount();
-                //label_supervisions.Content = Staff.LoadStudent(r);
+                label_supervisions.Content = Staff.SupervisionsCount(r.ID);
 
 
                 String photo = researcher.Photo;
@@ -127,7 +130,11 @@ namespace A2SDDWPF
 
         private void OpenSupervisions_Click(object sender, RoutedEventArgs e)
         {
-            SupervisionsPopUp.IsOpen = true;
+
+            Staff staff = (Staff) staffmember;
+            Supervisions open = new Supervisions(staff);
+
+            open.Show();
         }
 
         private void OpenPublications_Click(object sender, RoutedEventArgs e)

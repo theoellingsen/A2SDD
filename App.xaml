@@ -27,7 +27,11 @@
                             ObjectType="{x:Type local:Publication}">
         </ObjectDataProvider>
 
-        <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
+        <ObjectDataProvider x:Key="SupervisiorsList"
+                            ObjectType="{x:Type local:Student}">
+        </ObjectDataProvider>
+
+            <ObjectDataProvider ObjectType="{x:Type local:Researcher}"
                       MethodName="getReport" x:Key="PoorListView"> 
             <ObjectDataProvider.MethodParameters>
                 <sys:String>Poor</sys:String>
