@@ -46,7 +46,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT publication.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND researcher_id = ?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT pub.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND researcher_id = ?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
 
