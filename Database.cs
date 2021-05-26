@@ -362,8 +362,8 @@ namespace A2SDD
                 conn.Open();
 
                 //Do not change this command @David H
-                MySqlCommand cmd = new MySqlCommand("select count(*) from publication as pub, researcher_publication as respub " +
-                                                    "where pub.doi = respub.doi and researcher_id = ?id and year >= ?start and year <= ?end", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM publication AS pub, researcher_publication AS respub " +
+                                                    "WHERE pub.doi = respub.doi AND researcher_id = ?id AND year >= ?start AND year <= ?end", conn);
                 cmd.Parameters.AddWithValue("id", id);
                 cmd.Parameters.AddWithValue("start", startYear);
                 cmd.Parameters.AddWithValue("end", endYear);
