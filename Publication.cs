@@ -13,15 +13,15 @@ namespace A2SDD
         public String Title { get; set; }
         public String Authors { get; set; }
         public String Year { get; set; }
-        PublicationType Type { get; set; }
+        public PublicationType Type { get; set; }
         public String CiteAs { get; set; }
         public DateTime Available { get; set; }
 
-        int Age(Publication p)
+        public int Age()
         {
             DateTime Current = DateTime.Now;
 
-            return DateTime.Compare(Current, p.Available);
+            return Current.Year - Available.Year;
         }
     }
 }
