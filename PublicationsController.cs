@@ -14,5 +14,10 @@ namespace A2SDDWPF
         {
             return new ObservableCollection<Publication>(Database.LoadPublications(r));
         }
+
+        public static String ParsePublicationType(PublicationType p)
+        {
+            return p.ToString();
+        }
     }
 }

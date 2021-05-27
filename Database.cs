@@ -46,7 +46,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT pub.doi, title, year, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND researcher_id = ?id ORDER BY year DESC, title", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT pub.doi, title, year, type, cite_as, authors, available FROM publication AS pub, researcher_publication AS respub WHERE pub.doi = respub.doi AND researcher_id = ?id ORDER BY year DESC, title", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
@@ -59,10 +59,11 @@ namespace A2SDD
                         DOI = rdr.GetString(0),
                         Title = rdr.GetString(1),
                         Year = rdr.GetString(2),
-                        CiteAs = rdr.GetString(3),
-                        Authors = rdr.GetString(4),
-                        Available = rdr.GetDateTime(5)
-                    });
+                        Type = ParseEnum<PublicationType>(rdr.GetString(3)),
+                        CiteAs = rdr.GetString(4),
+                        Authors = rdr.GetString(5),
+                        Available = rdr.GetDateTime(6)
+                    }) ;
                 }
             }
             catch (MySqlException e)

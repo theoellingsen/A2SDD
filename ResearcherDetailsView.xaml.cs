@@ -134,6 +134,16 @@ namespace A2SDDWPF
             }
         }
 
+        private void PublicationListViewMouseClick(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+            Publication selected = (Publication)listBox.SelectedItems[0];
+
+            PublicationsDetailsView p = new PublicationsDetailsView(selected);
+            p.Show();
+
+        }
+
 
         private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
         {
@@ -148,9 +158,7 @@ namespace A2SDDWPF
         private void OpenSupervisions_Click(object sender, RoutedEventArgs e)
         {
 
-            Staff staff = (Staff) staffmember;
-            Supervisions open = new Supervisions(staff);
-
+            Supervisions open = new Supervisions(staffmember);
             open.Show();
         }
 
