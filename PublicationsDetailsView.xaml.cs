@@ -25,12 +25,12 @@ namespace A2SDDWPF
         public PublicationsDetailsView(Publication p)
         {
             InitializeComponent();
-            publication_title.Content = p.Title;
+            publication_title.Text = p.Title;
             publication_authors.Content = p.Authors;
             publication_type.Content = PublicationsController.ParsePublicationType(p.Type);
-            publication_cite.Content = p.CiteAs;
+            publication_cite.Text = p.CiteAs;
             publication_available.Content = p.Available.ToString("dd/MM/yyyy");
-            publication_age.Content = p.Age();
+            publication_age.Content = p.Age() + " year(s) old";
         }
     }
 }

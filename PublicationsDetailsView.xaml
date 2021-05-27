@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:A2SDDWPF"
         mc:Ignorable="d"
-        Title="PublicationsDetailsView" Height="240" Width="1000">
+        Title="PublicationsDetailsView" Height="240" Width="650" ResizeMode="NoResize">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="label_publicationname" Grid.Row="0" Grid.Column="0" Content="Title:" FontWeight="Bold"/>
-            <Label x:Name="publication_title" Grid.Row="0" Grid.Column="1"/>
+            <TextBlock TextWrapping="Wrap" Margin="4,4,0,0" HorizontalAlignment="Left" x:Name="publication_title" Grid.Row="0" Grid.Column="1"/>
         </Grid>
 
         <Grid Grid.Row="1">
@@ -53,7 +53,7 @@
             </Grid.ColumnDefinitions>
 
             <Label x:Name="label_publication_cite" Grid.Row="3" Grid.Column="0" Content="Reference:" FontWeight="Bold"/>
-            <Label x:Name="publication_cite" Grid.Row="3" Grid.Column="1"/>
+            <TextBlock Margin="4,4,0,0" TextWrapping="Wrap"  x:Name="publication_cite" Grid.Row="3" Grid.Column="1"/>
         </Grid>
 
         <Grid Grid.Row="4">
