@@ -370,8 +370,8 @@ namespace A2SDD
                 MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM publication AS pub, researcher_publication AS respub " +
                                                     "WHERE pub.doi = respub.doi AND researcher_id = ?id AND year >= ?start AND year <= ?end", conn);
                 cmd.Parameters.AddWithValue("id", id);
-                cmd.Parameters.AddWithValue("start", startYear);
-                cmd.Parameters.AddWithValue("end", endYear);
+                cmd.Parameters.AddWithValue("start", startYear.Year);
+                cmd.Parameters.AddWithValue("end", endYear.Year);
 
 
                 count = Int32.Parse(cmd.ExecuteScalar().ToString());

@@ -17,7 +17,7 @@ namespace A2SDD
             //Initiate database object (will be replaced with PublicationController at later date)
 
             // Create list of publications from given researcher
-            DateTime end = new DateTime(2015, 1, 1);
+            DateTime end = new DateTime (2015, 1, 1);
             DateTime start = end.AddYears(-3);
             int publications = Database.LoadPublications3YearAVerage(ID, start, end);
           
