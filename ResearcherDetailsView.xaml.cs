@@ -64,7 +64,7 @@ namespace A2SDDWPF
                 }
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
-                label_performance.Content = Staff.calcPerformance(researcher) + "%";
+                label_performance.Content = researcher.calcPerformance() + "%";
                 label_publications.Content = publications.Count();
                 label_supervisions.Content = (Staff.SupervisionsCount(r.ID) > 0) ? Staff.SupervisionsCount(r.ID) : "None";
                 if(Staff.SupervisionsCount(r.ID) == 0)

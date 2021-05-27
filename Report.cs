@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Collections.ObjectModel;
+using A2SDDWPF;
 
 namespace A2SDD
 {
@@ -14,16 +15,11 @@ namespace A2SDD
 			return (T)Enum.Parse(typeof(T), value);
 		}
 
-		private static ObservableCollection<Researcher> CreateObservable<Researcher>(IEnumerable<Researcher> enumerable)
-		{
-			return new ObservableCollection<Researcher>(enumerable);
-		}
 
-
-		public static ObservableCollection<Researcher> OrderByPerformance(String ReportLevel)
+		public static ObservableCollection<Staff> OrderByPerformance(String ReportLevel)
 		{
-			List<Researcher> rl = Database.LoadReseacherListView();
-			List<Researcher> filtered = new List<Researcher>();
+			ObservableCollection<Staff> staff = ResearcherController.LoadStaff();
+			List<Staff> filtered = new List<Staff>();
 			int lowcutoff = 0;
 			int highcutoff = 0;
 
@@ -57,15 +53,15 @@ namespace A2SDD
 					}
 			}
 
-			foreach(Researcher r in rl)
+			foreach(Staff s in staff)
 			{
-				if (Staff.calcPerformance(Database.LoadStaff(r)) > lowcutoff && Staff.calcPerformance(Database.LoadStaff(r)) <= highcutoff)
+				if (s.calcPerformance() > lowcutoff && s.calcPerformance() <= highcutoff)
 				{
-					filtered.Add(r);
+					filtered.Add(s);
 				}
 			}
 
-			IOrderedEnumerable<Researcher> x;
+			IOrderedEnumerable<Staff> x;
 			if ((l == A2SDD.ReportLevel.BelowExpectations) || (l == A2SDD.ReportLevel.Poor))
 			{
 				 var ordered = from r in filtered
@@ -81,7 +77,7 @@ namespace A2SDD
 			}
 			
 
-			ObservableCollection<Researcher> ol = CreateObservable<Researcher>(x);
+			ObservableCollection<Staff> ol = new ObservableCollection<Staff>(x);
 			return ol;
 		}
 	}

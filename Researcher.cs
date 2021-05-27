@@ -60,9 +60,9 @@ namespace A2SDD
             return pos;
         }
 
-        public ObservableCollection<Researcher> getReport(String level)
+        public ObservableCollection<Staff> getReport(String level)
 		{
-            ObservableCollection<Researcher> ol = Report.OrderByPerformance(level);
+            ObservableCollection<Staff> ol = Report.OrderByPerformance(level);
             return ol;
 		}
         public Position CurrentJob()

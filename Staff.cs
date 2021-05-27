@@ -33,16 +33,16 @@ namespace A2SDD
             return supervisions;
         }
 
-        public static double calcPerformance(Staff s)
+        public double calcPerformance()
         {
             // Performance is three year average divided by performance level
-            if (s.Positions.Count == 0)
+            if (Positions.Count == 0)
 			{
                 return -1;
 			} else
 			{
                 double value=0;
-				switch (s.CurrentLevel)
+				switch (CurrentLevel)
 				{
                     case CurrentLevel.A:
 					{
@@ -70,8 +70,8 @@ namespace A2SDD
                             break;
                     }
                 }
-                s.Performance = (ThreeYearAverage(s.ID) / value)*100;
-                return (ThreeYearAverage(s.ID)/ value)*100;
+                Performance = (ThreeYearAverage(ID) / value)*100;
+                return (ThreeYearAverage(ID)/ value)*100;
             }
         }
     }

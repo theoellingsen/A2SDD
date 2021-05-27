@@ -37,7 +37,7 @@ namespace A2SDDWPF
             return rList;
         }
 
-        static ObservableCollection<Staff> LoadStaff()
+        public static ObservableCollection<Staff> LoadStaff()
         {
             var baseList = Database.LoadReseacherListView();
             var staffList = from some in baseList
