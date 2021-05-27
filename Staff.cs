@@ -70,8 +70,8 @@ namespace A2SDD
                             break;
                     }
                 }
-                s.Performance = (ThreeYearAverage(s.ID) / value );
-                return value;
+                s.Performance = (ThreeYearAverage(s.ID) / value)*100;
+                return (ThreeYearAverage(s.ID)/ value)*100;
             }
         }
     }
