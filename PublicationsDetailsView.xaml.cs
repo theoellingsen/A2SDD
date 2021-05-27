@@ -31,6 +31,7 @@ namespace A2SDDWPF
             publication_cite.Text = p.CiteAs;
             publication_available.Content = p.Available.ToString("dd/MM/yyyy");
             publication_age.Content = p.Age() + " year(s) old";
+            publication_doi.Content = p.DOI;
         }
     }
 }

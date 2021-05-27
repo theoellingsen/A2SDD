@@ -15,6 +15,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -74,6 +75,15 @@
 
             <Label x:Name="label_publication_age" Grid.Row="5" Grid.Column="0" Content="Age:" FontWeight="Bold"/>
             <Label x:Name="publication_age" Grid.Row="5" Grid.Column="1"/>
+        </Grid>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="label_publication_doi" Grid.Row="5" Grid.Column="0" Content="DOI:" FontWeight="Bold"/>
+            <Label x:Name="publication_doi" Grid.Row="5" Grid.Column="1"/>
         </Grid>
 
 
