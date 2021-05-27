@@ -42,6 +42,7 @@ namespace A2SDDWPF
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
                 label_current.Content = researcher.CurrentJobStart();
+                supervisions.Content = "Supervisions:";
                 if (researcher.Positions.Count > 1)
 				{
                     PositionView.ItemsSource = researcher.GetPositions();
@@ -100,7 +101,10 @@ namespace A2SDDWPF
                 label_average.Content = "N/A";
                 label_performance.Content = "N/A";
                 label_supervisions.Content = "N/A";
-                OpenSupervisions.Visibility = System.Windows.Visibility.Hidden;
+                OpenSupervisions.Visibility = System.Windows.Visibility.Collapsed;
+                supervisions.Content = "Supervisor Name:";
+                label_supervisions.Content = researcher.Supervisor;
+                OpenSupervisions.Visibility = Visibility.Hidden;
 
                 ObservableCollection<Publication> publications = PublicationsController.LoadPublicationsFor(researcher);
                 label_publications.Content = publications.Count();

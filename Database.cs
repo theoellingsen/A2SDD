@@ -355,7 +355,7 @@ namespace A2SDD
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("SELECT degree, supervisor_id FROM researcher WHERE id=?id", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT researcher.degree, staff.given_name, staff.family_name, staff.title FROM staff, researcher WHERE researcher.supervisor_id = staff.id AND researcher.id=?id", conn);
 
                 cmd.Parameters.AddWithValue("id", r.ID);
                 rdr = cmd.ExecuteReader();
@@ -363,7 +363,9 @@ namespace A2SDD
                 while (rdr.Read())
                 {
                     changed.Degree = rdr.GetString(0);
-                    changed.Supervisor.ID = rdr.GetInt32(1);
+                    changed.Supervisor.GivenName = rdr.GetString(1);
+                    changed.Supervisor.FamilyName = rdr.GetString(2);
+                    changed.Supervisor.Title = rdr.GetString(3);
                 }
 
             }
@@ -382,7 +384,6 @@ namespace A2SDD
                     conn.Close();
                 }
             }
-
             return changed;
         }
 

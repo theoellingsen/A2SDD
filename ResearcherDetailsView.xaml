@@ -26,6 +26,17 @@
                 <TextBlock Text="{Binding Path=Title}"/>
             </StackPanel>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:Staff}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=GivenName}"/>
+                <TextBlock Text=" "/>
+                <TextBlock Text="{Binding Path=FamilyName}"/>
+                <TextBlock Text=" ("/>
+                <TextBlock Text="{Binding Path=Title}"/>
+                <TextBlock Text=")"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
 
 
@@ -150,9 +161,9 @@
             </Grid.ColumnDefinitions>
 
             <!-- Supervisions label, field and button for viewing supervisions-->
-            <Label Grid.Column="0" FontWeight="Bold" Content="Supervisions:"/>
-            <Label x:Name="label_supervisions" Grid.Column="1"/>
-            <Button x:Name="OpenSupervisions" Click="OpenSupervisions_Click" Grid.Column="2" Content="Show Names" Width="100" HorizontalAlignment="Left"/>
+            <Label x:Name="supervisions" Grid.Column="0" FontWeight="Bold" Grid.ColumnSpan="2"/>
+            <Label x:Name="label_supervisions" Grid.Column="1" Grid.ColumnSpan="2" Margin="32,0,74,0"/>
+            <Button x:Name="OpenSupervisions" Click="OpenSupervisions_Click" Grid.Column="2" Content="Show Names" Width="72" HorizontalAlignment="Left" Margin="28,0,0,0"/>
         </Grid>
 
         <!--<Grid Grid.Row="5">

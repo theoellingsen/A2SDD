@@ -14,7 +14,7 @@
         xmlns:local="clr-namespace:A2SDD"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     
-        xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher" Height="Auto" Width="Auto">
+        xmlns:Researcher="clr-A2SDD:Researcher;assembly=Researcher" Height="400" Width="200">
 
 
 
@@ -33,19 +33,13 @@
     </Window.Resources>
 
     <Grid Margin="0,0,0,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
 
-
-        <DockPanel LastChildFill="False" Grid.Row="0" Margin="0,0,0,0" Grid.RowSpan="2">
-            <Menu DockPanel.Dock="Top" Height="81" Width="282">
+        <Grid Grid.Row="0">
+            <Menu Grid.Row="0">
                 <MenuItem Header="Filter">
                     <MenuItem Header="Level A" Click="FilterClickA"/>
                     <MenuItem Header="Level B" Click="FilterClickB"/>
@@ -66,9 +60,11 @@
                 <Button x:Name="Search" Click="Button_Click" Content="Search" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50"/>
                 <Button x:Name="Reset" Click="ButtonReset_Click" Content="Reset" VerticalContentAlignment="Center" Visibility="Visible" HorizontalContentAlignment="Center" Width="50" Height="20"/>
             </Menu>
-            <ListBox x:Name="ResearcherListView" SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF"  VerticalContentAlignment="Top" DockPanel.Dock="top" Height="320"/>
-        </DockPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ListBox x:Name="ResearcherListView" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1"
+                 ItemsSource="{Binding Source={StaticResource ResearcherListView}}" MouseDoubleClick ="ListViewMouseClick" BorderBrush="#FFCFCFCF" Background="#FFCFCFCF"  VerticalContentAlignment="Top" Height="320"/>
+        </Grid>
     </Grid>
 
 
