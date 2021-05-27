@@ -382,8 +382,6 @@ namespace A2SDD
                     conn.Close();
                 }
             }
-
-            return changed;
         }
 
         /// <summary>
