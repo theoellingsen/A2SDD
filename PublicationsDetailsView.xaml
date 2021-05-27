@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:A2SDDWPF"
         mc:Ignorable="d"
-        Title="PublicationsDetailsView" Height="200" Width="1000">
+        Title="PublicationsDetailsView" Height="240" Width="1000">
 
     <Grid>
         <Grid.RowDefinitions>
