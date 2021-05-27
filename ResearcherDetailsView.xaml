@@ -76,8 +76,8 @@
                 <Label x:Name="label_positionCurrent" Grid.Row="5" Grid.Column="1"  HorizontalAlignment="Left"/>
             </Grid>
 
-            <!-- Researcher image-->
-            <Image x:Name="pic_researcher" Source="external-pfp.jpg" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" MaxWidth="150" MaxHeight="180"/>
+            <!-- Researcher image -->
+            <Image x:Name="pic_researcher" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" MaxWidth="150" MaxHeight="180"/>
         </Grid>
 
         <!-- "Commenced" section -->
@@ -171,8 +171,9 @@
         </Grid>-->
 
         <Grid Grid.Row="6">
-            <ListBox x:Name="PublicationView" SelectionChanged="ListBox_SelectionChanged"
-                 ItemsSource="{Binding Source={StaticResource ResearcherPublication}}"/>
+            <ListBox x:Name="PublicationView" SelectionChanged="ListBox_SelectionChanged" MouseDoubleClick="PublicationListViewMouseClick"
+                 ItemsSource="{Binding Source={StaticResource ResearcherPublication}}"
+            />
         </Grid>
 
 
