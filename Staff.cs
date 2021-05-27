@@ -12,12 +12,12 @@ namespace A2SDD
     {
         public List<Student> Supervisions { get; set; }
 
-        public static float ThreeYearAverage(int ID)
+        public static double ThreeYearAverage(int ID)
         {
             //Initiate database object (will be replaced with PublicationController at later date)
 
             // Create list of publications from given researcher
-            DateTime end = new DateTime (2015, 1, 1);
+            DateTime end = new DateTime (2016, 1, 1);
             DateTime start = end.AddYears(-3);
             int publications = Database.LoadPublications3YearAVerage(ID, start, end);
           
@@ -33,45 +33,45 @@ namespace A2SDD
             return supervisions;
         }
 
-        public static float calcPerformance(Researcher r)
+        public static double calcPerformance(Staff s)
         {
             // Performance is three year average divided by performance level
-            if (r.Positions.Count == 0)
+            if (s.Positions.Count == 0)
 			{
                 return -1;
 			} else
 			{
-                float value=0;
-				switch (r.Positions[0].Level)
+                double value=0;
+				switch (s.CurrentLevel)
 				{
-                    case EmploymentLevel.A:
+                    case CurrentLevel.A:
 					{
-                            value = 5;
+                            value = 0.5;
                             break;
 					}
-                    case EmploymentLevel.B:
-                        {
-                            value = 10;
+                    case CurrentLevel.B:
+                    {
+                            value = 1;
                             break;
-                        }
-                    case EmploymentLevel.C:
-                        {
-                            value = 20;
+                    }
+                    case CurrentLevel.C:
+                    {
+                            value = 2;
                             break;
-                        }
-                    case EmploymentLevel.D:
-                        {
-                            value = 32;
+                    }
+                    case CurrentLevel.D:
+                    {
+                            value = 3.2;
                             break;
-                        }
-                    case EmploymentLevel.E:
-                        {
-                            value = 40;
+                    }
+                    case CurrentLevel.E:
+                    {
+                            value = 4;
                             break;
-                        }
+                    }
                 }
-                r.Performance = (ThreeYearAverage(r.ID) / (value / 10))*100;
-                return (ThreeYearAverage(r.ID) / (value/10))*100;
+                s.Performance = (ThreeYearAverage(s.ID) / value );
+                return value;
             }
         }
     }

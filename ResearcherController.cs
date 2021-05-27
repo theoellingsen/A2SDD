@@ -15,6 +15,11 @@ namespace A2SDDWPF
             return new ObservableCollection<Student>(Database.LoadSupervisions(s));
         }
 
+        public static int CountPublications(Researcher r)
+        {
+            return Database.LoadCountPublications(r.ID);
+        }
+
         public static Student LoadStudent(Researcher r)
 		{
             return Database.LoadStudent(r);

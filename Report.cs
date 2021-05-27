@@ -59,7 +59,7 @@ namespace A2SDD
 
 			foreach(Researcher r in rl)
 			{
-				if (Staff.calcPerformance(r) > lowcutoff && Staff.calcPerformance(r) <= highcutoff)
+				if (Staff.calcPerformance(Database.LoadStaff(r)) > lowcutoff && Staff.calcPerformance(Database.LoadStaff(r)) <= highcutoff)
 				{
 					filtered.Add(r);
 				}

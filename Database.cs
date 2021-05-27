@@ -131,6 +131,45 @@ namespace A2SDD
             return r.Positions;
         }
 
+        public static int LoadCountPublications(int id)
+        {
+            int count = 0;
+
+            MySqlConnection conn = GetConnection();
+            MySqlDataReader rdr = null;
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("SELECT COUNT(*) FROM publication AS pub, researcher_publication AS respub " +
+                                                    "WHERE pub.doi = respub.doi AND researcher_id = ?id", conn);
+
+                cmd.Parameters.AddWithValue("id", id);
+
+                count = Int32.Parse(cmd.ExecuteScalar().ToString());
+
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Error connecting to database: " + e);
+            }
+            finally
+            {
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return count;
+
+        }
+
 
         public static List<Researcher> LoadReseacherListView()
         {
@@ -264,7 +303,7 @@ namespace A2SDD
 
                 while (rdr.Read())
                 {
-                    r.CurrentLevel = ParseEnum<CurrentLevel>(rdr.GetString(0));
+                    changed.CurrentLevel = ParseEnum<CurrentLevel>(rdr.GetString(0));
                 }
 
             }
