@@ -33,11 +33,12 @@ namespace A2SDDWPF
 
                 staffmember = researcher;
 
-                label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
+                label_name.Content = researcher.GivenName + " " + researcher.FamilyName;
+                label_title.Content = researcher.Title;
                 label_campus.Content = ResearcherController.ParseCampus(researcher.Campus);
                 label_positionCurrent.Content = researcher.CurrentJobTitle();
                 label_school.Content = researcher.Unit;
-                PositionorStudent.Content = "Current Position:";
+                //PositionorStudent.Content = "Current Position:";
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
                 label_current.Content = researcher.CurrentJobStart();
@@ -69,8 +70,6 @@ namespace A2SDDWPF
 
 
                 String photo = researcher.Photo;
-
-                var image = new Image();
                 var fullFilePath = @photo;
 
                 BitmapImage bitmap = new BitmapImage();
@@ -78,29 +77,27 @@ namespace A2SDDWPF
                 bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
                 bitmap.EndInit();
 
-                image.Source = bitmap;
-                pic.Children.Add(image);
+                pic_researcher.Source = bitmap;
 
             } else
 			{
                 Student researcher = ResearcherController.LoadStudent(r);
-                label_title.Content = researcher.Title + " " + researcher.GivenName + " " + researcher.FamilyName;
+                label_name.Content = researcher.GivenName + " " + researcher.FamilyName;
+                label_title.Content = researcher.Title;
                 label_campus.Content = researcher.Campus;
                 label_positionCurrent.Content = researcher.Degree;
                 label_school.Content = researcher.Unit;
-                PositionorStudent.Content = "Current Degree:";
+                conditional_job.Content = "Degree:";
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
                 label_current.Content = researcher.CurrentJobStart();
-                PrevPos.Visibility = System.Windows.Visibility.Hidden;
+                //PrevPos.Visibility = System.Windows.Visibility.Hidden;
                 PositionView.Visibility = System.Windows.Visibility.Hidden;
                 label_tenure.Content = researcher.Tenure() + " Years";
-                label_average.Visibility = System.Windows.Visibility.Hidden;
-                yrAve.Visibility = System.Windows.Visibility.Hidden;
-                label_performance.Visibility = System.Windows.Visibility.Hidden;
-                perf.Visibility = System.Windows.Visibility.Hidden;
-                //label_publications.Content = researcher.PublicationsCount();
-                //label_supervisions.Visibility = System.Windows.Visibility.Hidden;
+                label_average.Content = "N/A";
+                label_performance.Content = "N/A";
+                label_publications.Content = "N/A";
+                label_supervisions.Content = "N/A";
                 OpenSupervisions.Visibility = System.Windows.Visibility.Collapsed;
 
                 ObservableCollection<Publication> publications = PublicationsController.LoadPublicationsFor(researcher);
@@ -117,7 +114,6 @@ namespace A2SDDWPF
 
                 String photo = researcher.Photo;
 
-                var image = new Image();
                 var fullFilePath = @photo;
 
                 BitmapImage bitmap = new BitmapImage();
@@ -125,8 +121,7 @@ namespace A2SDDWPF
                 bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
                 bitmap.EndInit();
 
-                image.Source = bitmap;
-                pic.Children.Add(image);
+                pic_researcher.Source = bitmap;
             }
             
         }
