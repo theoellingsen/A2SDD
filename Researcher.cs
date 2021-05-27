@@ -93,16 +93,6 @@ namespace A2SDD
             return Positions.Last().Start;
         }
 
-        public Position GetEarliestJob()
-        {
-            return Positions.Last();
-        }
-
-        public DateTime EarliestStart()
-        {
-            return Start;
-        }
-
         public Double Tenure()
         {
             DateTime now = DateTime.Now;
@@ -110,10 +100,6 @@ namespace A2SDD
             tenure = tenure / 365.2425;
             tenure = Math.Round(tenure, 1);
             return tenure;
-        }
-        public int PublicationsCount()
-        {
-            return Publications.Count;
         }
     }
 }
