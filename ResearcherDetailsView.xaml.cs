@@ -66,7 +66,11 @@ namespace A2SDDWPF
                 label_average.Content = Staff.ThreeYearAverage(r.ID);
                 label_performance.Content = Staff.calcPerformance(researcher) + "%";
                 label_publications.Content = publications.Count();
-                label_supervisions.Content = Staff.SupervisionsCount(r.ID);
+                label_supervisions.Content = (Staff.SupervisionsCount(r.ID) > 0) ? Staff.SupervisionsCount(r.ID) : "None";
+                if(Staff.SupervisionsCount(r.ID) == 0)
+                {
+                    OpenSupervisions.Visibility = System.Windows.Visibility.Hidden;
+                }
 
 
                 String photo = researcher.Photo;
@@ -91,13 +95,12 @@ namespace A2SDDWPF
                 label_email.Content = researcher.Email;
                 label_commenced.Content = researcher.Start;
                 label_current.Content = researcher.CurrentJobStart();
-                //PrevPos.Visibility = System.Windows.Visibility.Hidden;
                 PositionView.Visibility = System.Windows.Visibility.Hidden;
                 label_tenure.Content = researcher.Tenure() + " Years";
                 label_average.Content = "N/A";
                 label_performance.Content = "N/A";
                 label_supervisions.Content = "N/A";
-                OpenSupervisions.Visibility = System.Windows.Visibility.Collapsed;
+                OpenSupervisions.Visibility = System.Windows.Visibility.Hidden;
 
                 ObservableCollection<Publication> publications = PublicationsController.LoadPublicationsFor(researcher);
                 label_publications.Content = publications.Count();
@@ -158,9 +161,11 @@ namespace A2SDDWPF
 
         private void OpenSupervisions_Click(object sender, RoutedEventArgs e)
         {
-
-            Supervisions open = new Supervisions(staffmember);
-            open.Show();
+            if(staffmember.Supervisions.Count() > 0)
+            {
+                Supervisions open = new Supervisions(staffmember);
+                open.Show();
+            }
         }
 
         private void OpenPublications_Click(object sender, RoutedEventArgs e)
